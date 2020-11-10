@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ReactReduxJSCardsProgect/static/css/main.ab7136cd.chunk.css",
+    "main.js": "/ReactReduxJSCardsProgect/static/js/main.44330374.chunk.js",
+    "main.js.map": "/ReactReduxJSCardsProgect/static/js/main.44330374.chunk.js.map",
+    "runtime-main.js": "/ReactReduxJSCardsProgect/static/js/runtime-main.4bebd4a9.js",
+    "runtime-main.js.map": "/ReactReduxJSCardsProgect/static/js/runtime-main.4bebd4a9.js.map",
+    "static/js/2.c0a0a7e2.chunk.js": "/ReactReduxJSCardsProgect/static/js/2.c0a0a7e2.chunk.js",
+    "static/js/2.c0a0a7e2.chunk.js.map": "/ReactReduxJSCardsProgect/static/js/2.c0a0a7e2.chunk.js.map",
+    "static/js/3.c7b4a981.chunk.js": "/ReactReduxJSCardsProgect/static/js/3.c7b4a981.chunk.js",
+    "static/js/3.c7b4a981.chunk.js.map": "/ReactReduxJSCardsProgect/static/js/3.c7b4a981.chunk.js.map",
+    "index.html": "/ReactReduxJSCardsProgect/index.html",
+    "static/css/main.ab7136cd.chunk.css.map": "/ReactReduxJSCardsProgect/static/css/main.ab7136cd.chunk.css.map",
+    "static/js/2.c0a0a7e2.chunk.js.LICENSE.txt": "/ReactReduxJSCardsProgect/static/js/2.c0a0a7e2.chunk.js.LICENSE.txt",
+    "static/media/logo.103b5fa1.svg": "/ReactReduxJSCardsProgect/static/media/logo.103b5fa1.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4bebd4a9.js",
+    "static/js/2.c0a0a7e2.chunk.js",
+    "static/css/main.ab7136cd.chunk.css",
+    "static/js/main.44330374.chunk.js"
+  ]
+}
