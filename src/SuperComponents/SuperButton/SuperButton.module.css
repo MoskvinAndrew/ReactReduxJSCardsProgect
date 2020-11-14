@@ -1,0 +1,84 @@
+.button_algolia {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*#4b5ef0*/
+    text-shadow: 0 1px 0 #24ac77;
+/*from(#aeb7ff), to(#5468ff))*/
+    background: -webkit-gradient(linear, left top, left bottom, from(#00EA90), to(#19855b));
+/*(#aeb7ff, #5468ff)*/
+    background: linear-gradient(#00EA90, #19855b);
+    /*#4b58ba*/
+    -webkit-box-shadow: 0 7px 13px -3px rgba(45,35,66,0.3), 0 2px 4px 0 rgba(45,35,66,0.4), inset 0 -3px 0 0 #19855b;
+    /*#4b58ba*/
+    box-shadow: 0 7px 13px -3px rgba(45,35,66,0.3), 0 2px 4px 0 rgba(45,35,66,0.4), inset 0 -3px 0 0 #19855b;
+    height: 3rem;
+    transition: box-shadow 0.15s ease, transform 0.15s ease, -webkit-box-shadow 0.15s ease, -webkit-transform 0.15s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    /*padding: 1.2em 3em;*/
+    text-align: center;
+    width: 200px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 30px;
+    /*margin: 50px auto;*/
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.button_algolia:hover {
+    /*#4b58ba*/
+    box-shadow: 0 11px 16px -3px rgba(45,35,66,0.3), 0 4px 5px 0 rgba(45,35,66,0.4), inset 0 -2px 0 0 #00EA90;
+    transform: translateY(-2px);
+}
+
+.button_algolia:active {
+/*(#5468ff, #5468ff)*/
+    background-image: linear-gradient(#00EA90, #489879),linear-gradient(to top, #fff, #e4e4e9);
+    box-shadow: inset 0 2px 0 1px rgba(132,138,184,0.11), inset 0 2px 9px 0 rgba(93,100,148,0.5);
+    transition: none !important;
+
+}
+
+.button_algoliaSmall {
+    width: 100px;
+    font-size: 8px;
+    height: 2rem;
+}
+.button_algoliaMid{
+    width: 150px;
+    font-size: 12px;
+    height: 2.5rem;
+}
+.button_algoliaBlue{
+    text-shadow: 0 1px 0 #4c72f6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#969ebc), to(#486ffc));
+    background: linear-gradient(#7982a5, #436af6);
+    -webkit-box-shadow: 0 7px 13px -3px rgba(45,35,66,0.3), 0 2px 4px 0 rgba(45,35,66,0.4), inset 0 -3px 0 0 #3f68fc;
+    box-shadow: 0 7px 13px -3px rgba(45,35,66,0.3), 0 2px 4px 0 rgba(45,35,66,0.4), inset 0 -3px 0 0 #4b72fc;
+}
+.button_algoliaBlue:hover {
+    box-shadow: 0 11px 16px -3px rgba(45,35,66,0.3), 0 4px 5px 0 rgba(45,35,66,0.4), inset 0 -2px 0 0 #4b58ba;
+}
+.button_algoliaBlue:active {
+    background-image: linear-gradient(#7982a5, #6374f8),linear-gradient(to top, #fff, #e4e4e9);
+}
+
+.button_algoliaBlack{
+    text-shadow: 0 1px 0 #000205;
+    background: -webkit-gradient(linear, left top, left bottom, from(#8d8d96), to(#05060c));
+    background: linear-gradient(#838386, #030407);
+    -webkit-box-shadow: 0 7px 13px -3px rgba(45,35,66,0.3), 0 2px 4px 0 rgba(45,35,66,0.4), inset 0 -3px 0 0 #090c15;
+    box-shadow: 0 7px 13px -3px rgba(45,35,66,0.3), 0 2px 4px 0 rgba(45,35,66,0.4), inset 0 -3px 0 0 #05070c;
+}
+.button_algoliaBlack:hover {
+    box-shadow: 0 11px 16px -3px rgba(45,35,66,0.3), 0 4px 5px 0 rgba(45,35,66,0.4), inset 0 -2px 0 0 #111428;
+}
+.button_algoliaBlack:active {
+    background-image: linear-gradient(#666675, #020307),linear-gradient(to top, #fff, #e4e4e9);
+}
