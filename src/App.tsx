@@ -7,13 +7,15 @@ import Profile from "./pages/profile/profile";
 import PasswordRecovery from "./pages/password_recovery/passwordRecovery";
 import NewPassword from "./pages/new_password/newPassword";
 import Login from "./pages/login/login";
-import FourOFour from "./pages/404/404";
+import FourOFour from "./pages/FourZeroFour/FourZeroFour";
 
 function App() {
 
 
     return (
         <div className="App">
+            <div>APP</div>
+
             <Switch>
                 <Route exact path='/TestPage' render={() => <TestPage/>}/>
                 <Route exact path='/Registration' render={() => <Registration/>}/>
@@ -23,6 +25,7 @@ function App() {
                 <Route exact path='/Login' render={() => <Login/>}/>
                 <Route exact path='/404' render={() => <FourOFour/>}/>
             </Switch>
+
         </div>
     );
 }

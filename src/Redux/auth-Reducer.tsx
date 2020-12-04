@@ -2,10 +2,11 @@ export type authStateType = typeof initialState;
 
 const initialState = {}
 
-// type ActionsType = {}
+type ActionsType = {};
 
-// @ts-ignore
+
 export const authReducer = (state: authStateType = initialState, action: ActionsType): authStateType => {
+    // @ts-ignore
     switch (action.type) {
         case 'isAuth':
             return state
