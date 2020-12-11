@@ -1,5 +1,5 @@
 import React from 'react';
-import  styler from"./SuperInput.module.css"
+import  styler from "./SuperInput.module.css"
 
 
 type SuperInputTypes = {

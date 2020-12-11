@@ -1,0 +1,156 @@
+.wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+
+
+}
+
+
+.wrapperImg .monsterImg {
+    position: relative;
+    border:6px solid yellow;
+    width: 200px;
+}
+.block34wrapp .wrapperImg{
+
+}
+
+
+
+.block12wrapp {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /*border:3px solid red;*/
+    height: 100vh;
+}
+
+.block34wrapp {
+    width: 200px;
+    /*border:3px solid #3057ca;*/
+    height: 100vh;
+}
+
+.block56wrapp {
+    width: 100%;
+    /*border:3px solid #050a1a;*/
+    height: 100vh;
+}
+
+.block1 {
+    border: 6px solid #9713de;
+    width: 100%;
+    height: 50%;
+    /*opacity: 1%;*/
+    /*background-color: #00ea90;*/
+}
+.dot1Scope{
+    position: absolute;
+    left:625px;
+    top:12px;
+}
+.dot1ScopeSecond{
+    position: absolute;
+    left:675px;
+    top:12px;
+}
+.block2 {
+    border:1px solid #13de1d;
+    width: 100%;
+    height: 50%;
+    opacity: 1%;
+    background-color: #61dafb;
+}
+.dot2Scope{
+    position: absolute;
+    left:629px;
+    top:15px;
+}
+.dot2ScopeSecond{
+    position: absolute;
+    left:678px;
+    top:17px;
+}
+
+.block3 {
+    border: 6px solid #de1342;
+    height: 100%;
+    /*background-color: #807ac1;*/
+}
+.dot3Scope{
+    position: absolute;
+    left:640px;
+    top:17px;
+}
+.dot3ScopeSecond{
+    position: absolute;
+    left:690px;
+    top:17px;
+}
+
+.block4 {
+    border: 6px solid #f14b4b;
+    width: 100%;
+    height: 50%;
+    /*background-color: #17181c;*/
+}
+.dot4Scope{
+    position: absolute;
+    left:650px;
+    top:12px;
+}
+.dot4ScopeSecond{
+    position: absolute;
+    left:700px;
+    top:12px;
+}
+
+.block5 {
+    border: 6px solid #0a0a0a;
+    width: 100%;
+    height: 50%;
+    /*background-color: #ff3f82;*/
+}
+.dot5Scope{
+    position: absolute;
+    left:645px;
+    top:15px;
+}
+.dot5ScopeSecond{
+    position: absolute;
+    left:695px;
+    top:15px;
+}
+
+.wrapperImg .dot {
+    border:2px solid blueviolet;
+     position: absolute;
+     width:100px;
+    left:20px;
+    top:12px;
+
+}
+.block34wrapp .wrapperImg .dotSecond{
+    position: absolute;
+    left:685px;
+    top:12px;
+}
+
+.arrow img {
+    /*border: 1px solid red;*/
+    width: 15%;
+
+
+}
+.arrow{
+    /*border: 1px solid green;*/
+    display: flex;
+   align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin-top: 250px;
+}
+.buttonContainer{
+    /*border: 1px solid green;*/
+width: 150px;
+}

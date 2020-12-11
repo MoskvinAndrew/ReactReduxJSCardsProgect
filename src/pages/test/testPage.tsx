@@ -1,8 +1,8 @@
 import React from 'react';
 import style from "./testPage.module.css";
-import SuperInput from "../../SuperComponents/SuperInput/SuperInput";
-import SuperButton from "../../SuperComponents/SuperButton/SuperButton";
-import SCheckBox from "../../SuperComponents/SuperCheckbox/SCheckBox";
+import SuperInput from "../../n1-main/m1-UI/common/SuperInput/SuperInput";
+import SuperButton from "../../n1-main/m1-UI/common/SuperButton/SuperButton";
+import SCheckBox from "../../n1-main/m1-UI/common/SuperCheckbox/SCheckBox";
 import FourOFour from "../FourZeroFour/FourZeroFour";
 
 

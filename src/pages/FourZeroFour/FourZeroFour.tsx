@@ -2,7 +2,8 @@ import React from 'react';
 import style from  "./FourZeroFour.module.css";
 import monster from "./../../images/Cut-the-rope-2.png"
 import NotFound from "../test/testMonster";
-import SuperButton from "../../SuperComponents/SuperButton/SuperButton";
+import SuperButton from "../../n1-main/m1-UI/common/SuperButton/SuperButton";
+import AdaptiveEyeMonster from "../test/adapMonst/monsterAdaptive";
 
 const FourOFour = () => {
 
