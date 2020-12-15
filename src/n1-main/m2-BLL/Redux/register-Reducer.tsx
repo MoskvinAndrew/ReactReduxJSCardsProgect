@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {AuthAPI, RegisterRequestType, UserType} from "../../DAL/api";
+import {AuthAPI, RegisterRequestType, UserType} from "../../m3-DAL/api";
 
 enum RegisterActionConsts {
     SET_ERROR = 'REGISTER/SET_ERROR',
