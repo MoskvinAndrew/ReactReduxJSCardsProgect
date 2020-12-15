@@ -20,9 +20,7 @@ const App = () => {
         <div className="App">
             <HashRouter>
                 <Provider store={store}>
-                    <>
                         <Main/>
-                    </>
                 </Provider>
             </HashRouter>
         </div>
