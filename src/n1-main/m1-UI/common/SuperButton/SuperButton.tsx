@@ -9,7 +9,7 @@ type SuperButtonType = {
 }
 
 
-const SuperButton: React.FC<SuperButtonType> = (props:SuperButtonType) => {
+export const SuperButton: React.FC<SuperButtonType> = (props:SuperButtonType) => {
 
     let propsButtonSize = `${style.button_algolia}`;
     const propsButtonSizeFunction = () => {
@@ -37,12 +37,12 @@ const SuperButton: React.FC<SuperButtonType> = (props:SuperButtonType) => {
 
     const onClickHandler = () =>{
         props.onClick();
-    }
+    };
     return(
         <div className={propsButtonSize +" "+ propsButtonColor} onClick={onClickHandler} >
             {props.buttonName}
         </div>
     )
-}
+};
 export default SuperButton;
 

@@ -1,18 +1,18 @@
 import {Route, Switch} from "react-router-dom";
 import TestPage from "../../../pages/test/testPage";
-import {RegistrationContainer} from "../../../pages/registration/RegistrationContainer";
 import Profile from "../../../pages/profile/profile";
 import PasswordRecovery from "../../../pages/password_recovery/passwordRecovery";
 import NewPassword from "../../../pages/new_password/newPassword";
 import Login from "../../../pages/login/login";
 import FourOFour from "../../../pages/FourZeroFour/FourZeroFour";
 import React from "react";
+import {RegistrationComponent} from "../../../pages/registration/RegistrationComponent";
 
 const Routes: React.FC = () => {
     return(
         <Switch>
             <Route exact path='/testPage' render={() => <TestPage/>}/>
-            <Route exact path='/registration' render={() => <RegistrationContainer/>}/>
+            <Route exact path='/registration' render={() => <RegistrationComponent/>}/>
             <Route exact path='/profile' render={() => <Profile/>}/>
             <Route exact path='/passwordRecovery' render={() => <PasswordRecovery/>}/>
             <Route exact path='/newPassword' render={() => <NewPassword/>}/>
@@ -20,5 +20,5 @@ const Routes: React.FC = () => {
             <Route exact path='/404' render={() => <FourOFour/>}/>
         </Switch>
     )
-}
+};
 export default Routes;
