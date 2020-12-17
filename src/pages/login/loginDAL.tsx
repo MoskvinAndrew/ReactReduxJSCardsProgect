@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {loginParamsType} from "./login-reduser";
+import {loginParamsType} from "../../n1-main/m2-BLL/login-reduser";
 
 const instance = axios.create({
     baseURL: "http://localhost:7542/2.0/",
@@ -7,7 +7,9 @@ const instance = axios.create({
 })
 
 export const loginAPI = {
+
     login(data: loginParamsType) {
+        debugger
         const promise = instance.post('/auth/login', data);
         return promise;
     },

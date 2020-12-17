@@ -1,6 +1,8 @@
 import React from 'react';
 import {Dispatch} from "redux";
-import {loginAPI} from "./loginDAL";
+import {loginAPI} from "../../pages/login/loginDAL";
+import {setProfileDataAC, setProfileDataACType} from './Redux/profile-reducer';
+
 
 const CHANGE_LOGIN_STATUS = 'loginReducer/CHANGE_LOGIN_STATUS';
 const LOGIN_PROCESS_IN_PROGRESS = 'loginReducer/LOGIN_PROCESS_IN_PROGRESS';
@@ -44,19 +46,23 @@ export const changeLoginStatusAC = (isLoggedIn:boolean):changeLoginStatusACType 
 export const loginProcessInProgressAC = (loginProcessInProgress:boolean):loginProcessInProgressACType=>({type:'loginReducer/LOGIN_PROCESS_IN_PROGRESS',loginProcessInProgress} as const);
 
 
-export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType>)=> {
+export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|setProfileDataACType>)=> {
     dispatch(loginProcessInProgressAC(true));
   loginAPI.login(data)
       .then((res:any)=> {
           alert('YRAAA');
+          let data = res.data;
+          console.log( data);
+           dispatch(setProfileDataAC(data));
           dispatch(changeLoginStatusAC(true));
-          console.log(res)
-      })
-      .catch((error) => {
-          alert("error")
 
       })
-      .finally(()=>{
+      .catch ((e)=> {
+          alert('neet')
+        const error = e.response
+            ? e.response.data.error
+            : (e.message + ', more details in the console')})
+    .finally(()=>{
           dispatch(loginProcessInProgressAC(false));
       })
 

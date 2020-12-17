@@ -1,86 +1,104 @@
 import React, {useState} from 'react';
 import style from "./login.module.css";
-import { Formik, Form, Field } from 'formik';
+
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
+import {useFormik} from "formik";
+import {loginTC} from "../../n1-main/m2-BLL/login-reduser";
 import { Redirect } from 'react-router-dom';
-import {loginTC} from "./login-reduser";
-import SuperButton from "../../n1-main/m1-UI/common/SuperButton/SuperButton";
+import {
+    Button,
+    Checkbox,
+    FormControl,
+    FormControlLabel,
+    FormGroup,
+    FormLabel,
+    Grid,
+    TextField
+} from "@material-ui/core";
+import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 
 
 
-export const Login = () => {
+
+
+const Login = () =>{
     const loginProcessInProgress = useSelector<RootState,boolean>(state =>state.login.loginProcessInProgress);
-    const isLoggedIn = useSelector<RootState,boolean>((state)=>state.login.isLoggedIn);
+    let isLoggedIn = useSelector<RootState,boolean>((state)=>state.login.isLoggedIn);
     let dispatch = useDispatch();
 
-    function validateEmail(value:string) {
-        let error;
-        if (!value) {
-            error = 'Field is Required';
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-            error = 'Invalid email address';
-        }
-        return error;
-    }
+    const formik = useFormik({
+        validate: (values) => {
+            if(!values.email) return  {email:"email is required"};
+            if(!values.password)
+                return  {password:"password is required"}
 
-    function validatePassword(value:string) {
-        let error;
-        if (value === 'admin') {
-            error = 'Nice try!';
-        }else if(value.split('').length < 5){
-            error = 'To short password!';
+
+        },
+        initialValues: {
+            email: '',
+            password: '',
+            rememberMe: false
+        },
+        onSubmit: (values,{resetForm}) => {
+            dispatch(loginTC(values));
+            console.log(values);
+            resetForm({values: {email: '', password: '', rememberMe: false}})
+            values = { email: '',
+                password: '',
+                rememberMe:false}
         }
-        return error;
-    }
+    })
+
     if(isLoggedIn){
         return  <Redirect to={"/profile"}/>
     }
-    return(
-        <div className={style.wrapper}>
-        <div>
-        <h1>Signup</h1>
-        <Formik
-            initialValues={{
-                email: '',
-                password: '',
-                rememberMe:false
-            }}
-            onSubmit={(values,{resetForm}) => {
+    return<div className={style.wrapper}>
+    <Grid container justify="center">
+        <Grid item xs={4}>
+            <form onSubmit={formik.handleSubmit}>
+                <FormControl>
+                    <FormLabel>
+                        <p>To log in get registered
+                            <a href={'https://social-network.samuraijs.com/'}
+                               target={'_blank'}>here
+                            </a>
+                        </p>
+                        <p>or use common test account credentials:</p>
+                        <p>Email: nya-admin@nya.nya</p>
+                        <p>Password: 1qazxcvBG</p>
+                        <h1>Signup</h1>
+                    </FormLabel>
+                    <FormGroup>
+                        <TextField
+                            type="email"
+                            label="Email"
+                            {...formik.getFieldProps('email')}
+                        />
+                        {formik.errors.email?formik.errors.email:null}
+                        <TextField
+                            id="password"
+                            // type="password"
+                            label="Password"
+                            margin="normal"
+                            onChange={formik.handleChange}
+                            value={formik.values.password}
+                        />
+                        {formik.errors.password?formik.errors.password:null}
+                        <FormControlLabel
+                            label={'Remember me'}
+                            control={<Checkbox
+                                {...formik.getFieldProps('rememberMe')}
+                                checked={formik.values.rememberMe}
+                            />}
 
-               dispatch(loginTC(values));
-               console.log(values);
-
-               resetForm({values: {email: '', password: '', rememberMe: false}})
-                values = { email: '',
-                    password: '',
-                    rememberMe:false}
-            }}
-        >
-            {({ errors, touched, isValidating,resetForm }) => (
-                <Form>
-
-                    <div className={style.emailForm}>
-                    <Field name="email" validate={validateEmail}  />
-                    {errors.email && touched.email && <div>{errors.email}</div>}
-                    </div>
-
-
-                   <div className={style.emailForm}>
-                       <Field name="password" validate={validatePassword} />
-                    {errors.password && touched.password && <div>{errors.password}</div>}
-
-                   </div>
-
-                    <Field  name="rememberMe" type="checkbox" />
-
-                    <button disabled={loginProcessInProgress} type="submit">Submit</button>
-
-                </Form>
-            )}
-        </Formik>
+                        />
+                        <Button type={'submit'} variant={'contained'} color={'primary'} disabled={loginProcessInProgress}>Login</Button>
+                    </FormGroup>
+                </FormControl>
+            </form>
+        </Grid>
+    </Grid>
     </div>
-            <p>1qazxcvBG</p>
-        </div>
-)}
+
+}
 export default Login;
