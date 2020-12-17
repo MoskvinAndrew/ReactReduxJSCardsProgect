@@ -21,7 +21,6 @@ export const RegistrationForm: React.FC<RegistrationPropsType> = () => {
     });
 
 
-
     return (
         <div className={s.form__wrapper}>
             <form onSubmit={formik.handleSubmit}>
