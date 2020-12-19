@@ -28,7 +28,6 @@ export const profileReducer = (state: authStateType = initialState, action: Acti
     switch (action.type) {
 
         case 'profileReducer/SET_PROFILE_DATA':
-            debugger
             return {...state,profileData:action.profileData}
 
         default:

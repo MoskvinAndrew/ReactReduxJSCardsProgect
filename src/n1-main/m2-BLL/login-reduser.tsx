@@ -49,17 +49,13 @@ export const loginProcessInProgressAC = (loginProcessInProgress:boolean):loginPr
 export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|setProfileDataACType>)=> {
     dispatch(loginProcessInProgressAC(true));
   loginAPI.login(data)
-      .then((res:any)=> {
-          alert('YRAAA');
-          let data = res.data;
-          console.log( data);
-           dispatch(setProfileDataAC(data));
+      .then( res => {
+          dispatch(setProfileDataAC(res.data));
           dispatch(changeLoginStatusAC(true));
 
       })
-      .catch ((e)=> {
-          alert('neet')
-        const error = e.response
+      .catch ( e=> {
+          const error = e.response
             ? e.response.data.error
             : (e.message + ', more details in the console')})
     .finally(()=>{
