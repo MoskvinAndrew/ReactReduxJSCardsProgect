@@ -5,9 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./n1-main/m2-BLL/Redux/reduxStore";
-import App from './n1-main/m1-UI/App';
-
-
+import {App} from './n1-main/m1-UI/App';
 
 ReactDOM.render(
     <HashRouter>

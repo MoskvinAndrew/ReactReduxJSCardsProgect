@@ -1,10 +1,11 @@
 import React from 'react';
+import {ForgotForm} from "./ForgotForm";
 
 
 const PasswordRecovery: React.FC = () =>{
     return(
         <div>
-            PasswordRecovery
+            <ForgotForm />
         </div>
     )
 }

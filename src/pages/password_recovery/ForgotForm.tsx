@@ -2,7 +2,7 @@ import {useFormik} from "formik";
 import React from "react";
 import s from "../registration/registration.module.css"
 import {useDispatch} from "react-redux";
-import { forgotThunk } from "../../n1-main/m2-BLL/Redux/forgotReducer";
+import { forgotThunk } from "../../n1-main/m2-BLL/Redux/forgot-Reducer";
 
 type ForgotPropsType = {}
 
@@ -12,7 +12,7 @@ export const ForgotForm: React.FC<ForgotPropsType> = () => {
 
     const formik = useFormik({
         initialValues: {
-            email: '',
+            email: ''
         },
         onSubmit: (values) => {
             dispatch(forgotThunk(values));
@@ -31,7 +31,7 @@ export const ForgotForm: React.FC<ForgotPropsType> = () => {
                         <input type="email" {...formik.getFieldProps('email')}/>
                     </div>
                     <div className={s.form__content_btn}>
-                        <button type={'submit'}>SEND</button>
+                        <button type={'submit'}>SEND EMAIl</button>
                     </div>
                 </div>
             </form>

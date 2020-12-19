@@ -1,10 +1,11 @@
 import React from 'react';
+import {NewPasswordForm} from "./NewPasswordForm";
 
 
 const NewPassword: React.FC = () =>{
     return(
         <div>
-            NewPassword
+            <NewPasswordForm/>
         </div>
     )
 }

@@ -7,13 +7,18 @@ const instance = axios.create({
 });
 
 export type RegisterRequestType = {
-   email: string
-   password: string
+    email: string
+    password: string
 }
 
 export type ForgotRequestType = {
     email: string
- }
+}
+
+export type NewPassRequestType = {
+    password: string
+    resetPasswordToken: string
+}
 
 export type UserType = {
     created: string
@@ -39,6 +44,13 @@ export const AuthAPI = {
         return instance.post<ResponseType<UserType>>('auth/register', data)
     },
     forgot(data: ForgotRequestType) {
-        return instance.post<ResponseType<UserType>>('auth/forgot', data)
+        return instance.post<ResponseType<UserType>>('auth/forgot', {
+            email: data.email,
+            frome: "test-front-admin <ai73a@yandex.by>",
+            message: `<div style="background-color: lime; padding: 15px">password recovery link: <a href='http://localhost:3000/#/newPassword/$token$'>link</a></div>`
+        })
+    },
+    newPass(data: NewPassRequestType) {
+        return instance.post<ResponseType<UserType>>('auth/set-new-password', data)
     },
 };
