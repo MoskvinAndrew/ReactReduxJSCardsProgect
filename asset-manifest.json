@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/ReactReduxJSCardsProgect/static/css/main.768d4ecd.chunk.css",
-    "main.js": "/ReactReduxJSCardsProgect/static/js/main.9be5db27.chunk.js",
-    "main.js.map": "/ReactReduxJSCardsProgect/static/js/main.9be5db27.chunk.js.map",
-    "runtime-main.js": "/ReactReduxJSCardsProgect/static/js/runtime-main.f5d9c354.js",
-    "runtime-main.js.map": "/ReactReduxJSCardsProgect/static/js/runtime-main.f5d9c354.js.map",
-    "static/js/2.159ed8c0.chunk.js": "/ReactReduxJSCardsProgect/static/js/2.159ed8c0.chunk.js",
-    "static/js/2.159ed8c0.chunk.js.map": "/ReactReduxJSCardsProgect/static/js/2.159ed8c0.chunk.js.map",
-    "static/js/3.3ab2fc6e.chunk.js": "/ReactReduxJSCardsProgect/static/js/3.3ab2fc6e.chunk.js",
-    "static/js/3.3ab2fc6e.chunk.js.map": "/ReactReduxJSCardsProgect/static/js/3.3ab2fc6e.chunk.js.map",
+    "main.css": "/ReactReduxJSCardsProgect/static/css/main.385e1eaf.chunk.css",
+    "main.js": "/ReactReduxJSCardsProgect/static/js/main.2ae30598.chunk.js",
+    "main.js.map": "/ReactReduxJSCardsProgect/static/js/main.2ae30598.chunk.js.map",
+    "runtime-main.js": "/ReactReduxJSCardsProgect/static/js/runtime-main.da85bf1d.js",
+    "runtime-main.js.map": "/ReactReduxJSCardsProgect/static/js/runtime-main.da85bf1d.js.map",
+    "static/js/2.b8191036.chunk.js": "/ReactReduxJSCardsProgect/static/js/2.b8191036.chunk.js",
+    "static/js/2.b8191036.chunk.js.map": "/ReactReduxJSCardsProgect/static/js/2.b8191036.chunk.js.map",
+    "static/js/3.90a8c97f.chunk.js": "/ReactReduxJSCardsProgect/static/js/3.90a8c97f.chunk.js",
+    "static/js/3.90a8c97f.chunk.js.map": "/ReactReduxJSCardsProgect/static/js/3.90a8c97f.chunk.js.map",
     "index.html": "/ReactReduxJSCardsProgect/index.html",
-    "static/css/main.768d4ecd.chunk.css.map": "/ReactReduxJSCardsProgect/static/css/main.768d4ecd.chunk.css.map",
-    "static/js/2.159ed8c0.chunk.js.LICENSE.txt": "/ReactReduxJSCardsProgect/static/js/2.159ed8c0.chunk.js.LICENSE.txt",
+    "static/css/main.385e1eaf.chunk.css.map": "/ReactReduxJSCardsProgect/static/css/main.385e1eaf.chunk.css.map",
+    "static/js/2.b8191036.chunk.js.LICENSE.txt": "/ReactReduxJSCardsProgect/static/js/2.b8191036.chunk.js.LICENSE.txt",
     "static/media/modPicture.a8e8e881.png": "/ReactReduxJSCardsProgect/static/media/modPicture.a8e8e881.png",
     "static/media/sketched-left-arrow.cd8ab34f.png": "/ReactReduxJSCardsProgect/static/media/sketched-left-arrow.cd8ab34f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f5d9c354.js",
-    "static/js/2.159ed8c0.chunk.js",
-    "static/css/main.768d4ecd.chunk.css",
-    "static/js/main.9be5db27.chunk.js"
+    "static/js/runtime-main.da85bf1d.js",
+    "static/js/2.b8191036.chunk.js",
+    "static/css/main.385e1eaf.chunk.css",
+    "static/js/main.2ae30598.chunk.js"
   ]
 }
