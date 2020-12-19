@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {loginParamsType} from "../m2-BLL/login-reduser";
 
 
 const instance = axios.create({
@@ -52,5 +53,9 @@ export const AuthAPI = {
     },
     newPass(data: NewPassRequestType) {
         return instance.post<ResponseType<UserType>>('auth/set-new-password', data)
+    },
+    login(data: loginParamsType) {
+        const promise = instance.post('auth/login', data);
+        return promise;
     },
 };

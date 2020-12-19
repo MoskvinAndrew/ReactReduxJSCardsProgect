@@ -6,6 +6,8 @@ type SuperButtonType = {
     onClick:()=>void,
     size?: 'small' | 'medium' | 'big',
     color?: 'green' | 'blue' | 'black',
+    disabled?:boolean,
+    type?:string
 }
 
 
@@ -39,7 +41,7 @@ export const SuperButton: React.FC<SuperButtonType> = (props:SuperButtonType) =>
         props.onClick();
     };
     return(
-        <div className={propsButtonSize +" "+ propsButtonColor} onClick={onClickHandler} >
+        <div className={propsButtonSize +" "+ propsButtonColor} onClick={onClickHandler} aria-disabled={props.disabled} >
             {props.buttonName}
         </div>
     )

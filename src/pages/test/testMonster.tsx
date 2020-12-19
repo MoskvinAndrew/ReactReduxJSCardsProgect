@@ -19,7 +19,7 @@ let NotFound = () => {
             <div className={style.block12wrapp}>
                 <div className={style.block1}
                      onMouseOver={() => onMouseOverBlock(`${style.dot1Scope}`, `${style.dot1ScopeSecond}`)}>
-                    <div className={style.arrow}> <div className={style.buttonContainer}><SuperButton buttonName={'HOME'} onClick={() => {
+                    <div className={style.arrow}> <div className={style.buttonContainer}><SuperButton  buttonName={'HOME'} onClick={() => {
                     }} color={"black"} size={"small"}/></div><img alt={'arrow'} src={arrow}/></div>
 
 

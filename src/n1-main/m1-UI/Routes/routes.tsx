@@ -3,10 +3,11 @@ import TestPage from "../../../pages/test/testPage";
 import Profile from "../../../pages/profile/profile";
 import PasswordRecovery from "../../../pages/password_recovery/passwordRecovery";
 import NewPassword from "../../../pages/new_password/newPassword";
-import Login from "../../../pages/login/login";
 import FourOFour from "../../../pages/FourZeroFour/FourZeroFour";
 import React from "react";
+import Login from "../../../pages/login/login";
 import {RegistrationComponent} from "../../../pages/registration/RegistrationComponent";
+
 
 const Routes: React.FC = () => {
     return(
