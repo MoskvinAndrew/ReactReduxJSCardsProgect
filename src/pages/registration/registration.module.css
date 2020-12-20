@@ -10,15 +10,17 @@
     justify-content: flex-start;
 }
 .form__content {
+    padding: 25px 15px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 .form__content_email,
 .form__content_password{
     padding: 5px;
-    width: 20%;
+    width: 300px;
 }
 
 .form__content_email h4,

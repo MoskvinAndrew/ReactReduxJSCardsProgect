@@ -5,12 +5,12 @@ import s from './nav.module.css';
 export const Nav = () => {
     return (
         <div className={s.nav}>
-            <NavLink to={'/testPage'}>TestPage</NavLink>
             <NavLink to={'/registration'}>Registration</NavLink>
+            <NavLink to={'/login'}>Login</NavLink>
             <NavLink to={'/profile'}>Profile</NavLink>
             <NavLink to={'/passwordRecovery'}>Reset Password</NavLink>
             <NavLink to={'/newPassword'}>New password</NavLink>
-            <NavLink to={'/login'}>Login</NavLink>
+            <NavLink to={'/testPage'}>TestPage</NavLink>
         </div>
     );
 }
