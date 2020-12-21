@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import Main from "./Main/Main";
-import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../m2-BLL/Redux/reduxStore";
-import {initializedAppThunk, StatusPageType} from '../m2-BLL/Redux/app-Reducer';
-import {CircularProgress} from '@material-ui/core';
-
+import {initializedAppThunk, StatusPageType} from "../m2-BLL/Redux/app-Reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {CircularProgress} from "@material-ui/core";
+import Main from "./Main/Main";
 
 export const App = () => {
 

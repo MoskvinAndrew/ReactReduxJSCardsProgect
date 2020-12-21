@@ -5,11 +5,9 @@ import PasswordRecovery from "../../../pages/password_recovery/passwordRecovery"
 import NewPassword from "../../../pages/new_password/newPassword";
 import FourOFour from "../../../pages/FourZeroFour/FourZeroFour";
 import React from "react";
-<<<<<<< HEAD
 import Login from "../../../pages/login/login";
-=======
 import {RegistrationComponent} from "../../../pages/registration/RegistrationComponent";
->>>>>>> d21fd915710953e6ff878755b37a2f6ba2fcc2f4
+
 
 const Routes: React.FC = () => {
     return(

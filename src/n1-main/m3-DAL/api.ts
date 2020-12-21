@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {loginParamsType} from "../m2-BLL/login-reduser";
 
 
 const instance = axios.create({
@@ -7,8 +8,17 @@ const instance = axios.create({
 });
 
 export type RegisterRequestType = {
-   email: string
-   password: string
+    email: string
+    password: string
+}
+
+export type ForgotRequestType = {
+    email: string
+}
+
+export type NewPassRequestType = {
+    password: string
+    resetPasswordToken: string
 }
 
 export type UserType = {
@@ -33,5 +43,19 @@ type ResponseType<D = {}> = {
 export const AuthAPI = {
     register(data: RegisterRequestType) {
         return instance.post<ResponseType<UserType>>('auth/register', data)
-    }
+    },
+    forgot(data: ForgotRequestType) {
+        return instance.post<ResponseType<UserType>>('auth/forgot', {
+            email: data.email,
+            frome: "test-front-admin <ai73a@yandex.by>",
+            message: `<div style="background-color: lime; padding: 15px">password recovery link: <a href='http://localhost:3000/#/newPassword/$token$'>link</a></div>`
+        })
+    },
+    newPass(data: NewPassRequestType) {
+        return instance.post<ResponseType<UserType>>('auth/set-new-password', data)
+    },
+    login(data: loginParamsType) {
+        const promise = instance.post('auth/login', data);
+        return promise;
+    },
 };
