@@ -5,16 +5,25 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
+<<<<<<< HEAD
     "@material-ui/icons": "^4.11.2",
+=======
+>>>>>>> d21fd915710953e6ff878755b37a2f6ba2fcc2f4
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
+    "@types/material-ui": "^0.21.8",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/yup": "0.29.0",
     "axios": "^0.21.0",
     "formik": "^2.2.6",
+<<<<<<< HEAD
+=======
+    "material-ui": "^0.20.2",
+>>>>>>> d21fd915710953e6ff878755b37a2f6ba2fcc2f4
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -23,7 +32,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "0.29.0"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -53,7 +63,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/react-redux": "^7.1.11",
+    "@types/react-redux": "^7.1.12",
     "@types/react-router-dom": "^5.1.6",
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dispatch} from "redux";
-import {loginAPI} from "../../pages/login/loginDAL";
-import {setProfileDataAC, setProfileDataACType} from './Redux/profile-reducer';
+import {loginAPI} from "../../../pages/login/loginDAL";
+import {setProfileDataAC, setProfileDataACType} from './profile-reducer';
 
 
 const CHANGE_LOGIN_STATUS = 'loginReducer/CHANGE_LOGIN_STATUS';

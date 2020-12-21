@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {loginParamsType} from "../../n1-main/m2-BLL/login-reduser";
+import {loginParamsType} from "../../n1-main/m2-BLL/Redux/login-reduser";
 
 const instance = axios.create({
     baseURL: "http://localhost:7542/2.0/",
