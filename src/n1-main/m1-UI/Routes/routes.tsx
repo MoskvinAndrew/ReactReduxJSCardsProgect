@@ -12,12 +12,12 @@ import {RegistrationComponent} from "../../../pages/registration/RegistrationCom
 const Routes: React.FC = () => {
     return(
         <Switch>
-            <Route exact path='/testPage' render={() => <TestPage/>}/>
             <Route exact path='/registration' render={() => <RegistrationComponent/>}/>
+            <Route exact path='/login' render={() => <Login/>}/>
             <Route exact path='/profile' render={() => <Profile/>}/>
             <Route exact path='/passwordRecovery' render={() => <PasswordRecovery/>}/>
             <Route exact path='/newPassword' render={() => <NewPassword/>}/>
-            <Route exact path='/login' render={() => <Login/>}/>
+            <Route exact path='/testPage' render={() => <TestPage/>}/>
             <Route exact path='/404' render={() => <FourOFour/>}/>
         </Switch>
     )
