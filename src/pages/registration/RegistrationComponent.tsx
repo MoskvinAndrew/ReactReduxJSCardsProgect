@@ -7,10 +7,13 @@ import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 
 export const RegistrationComponent: React.FC = () => {
     const isSignedUp = useSelector<RootState, boolean>(state => state.register.isSignedUp);
+    const isLoggedIn = useSelector<RootState, boolean>(state => state.login.isLoggedIn);
 
 
     if (isSignedUp) {
         return <Redirect to={'/login'}/>
+    } else if(isLoggedIn){
+        return <Redirect to={'/profile'} />
     }
 
     return (

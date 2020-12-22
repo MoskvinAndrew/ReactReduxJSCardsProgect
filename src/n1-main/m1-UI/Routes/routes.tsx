@@ -7,6 +7,7 @@ import FourOFour from "../../../pages/FourZeroFour/FourZeroFour";
 import React from "react";
 import Login from "../../../pages/login/login";
 import {RegistrationComponent} from "../../../pages/registration/RegistrationComponent";
+import { Packs } from "../../../pages/packs/Packs";
 
 
 const Routes: React.FC = () => {
@@ -15,6 +16,7 @@ const Routes: React.FC = () => {
             <Route exact path='/registration' render={() => <RegistrationComponent/>}/>
             <Route exact path='/login' render={() => <Login/>}/>
             <Route exact path='/profile' render={() => <Profile/>}/>
+            <Route exact path='/packs' render={() => <Packs />}/>
             <Route exact path='/passwordRecovery' render={() => <PasswordRecovery/>}/>
             <Route exact path='/newPassword' render={() => <NewPassword/>}/>
             <Route exact path='/testPage' render={() => <TestPage/>}/>

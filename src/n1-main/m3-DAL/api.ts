@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {loginParamsType} from "../m2-BLL/login-reduser";
+import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 
 
 const instance = axios.create({
@@ -58,4 +59,11 @@ export const AuthAPI = {
         const promise = instance.post('auth/login', data);
         return promise;
     },
+};
+
+export const PacksAPI = {
+    getPacks(){
+        return instance.get<PacksStateType>('/cards/pack')
+    },
+
 };

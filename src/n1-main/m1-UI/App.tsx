@@ -5,6 +5,7 @@ import {initializedAppThunk, StatusPageType} from "../m2-BLL/Redux/app-Reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {CircularProgress} from "@material-ui/core";
 import Main from "./Main/Main";
+import { PacksAPI } from '../m3-DAL/api';
 
 export const App = () => {
 
@@ -15,7 +16,7 @@ export const App = () => {
     //for initialization
     useEffect(() => {
         dispatch(initializedAppThunk())
-    })
+    }, [])
 
     if (!isInitiallizedApp || appStatus == 'loading') {
         return <div className={'circular__progress'}>
