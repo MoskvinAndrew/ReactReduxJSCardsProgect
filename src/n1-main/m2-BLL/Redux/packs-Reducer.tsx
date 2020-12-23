@@ -1,11 +1,10 @@
 import {Dispatch} from "redux";
-import {PacksAPI} from "../../m3-DAL/api";
-import {setStatus} from "./app-Reducer";
+import {PackDataModalWindowType, PacksAPI, ResponseCardsPackType} from "../../m3-DAL/api";
+import {setError, setStatus} from "./app-Reducer";
 
 enum PacksActionConsts {
     SET_DATA = 'PACKS/SET_DATA',
-    SET_STATUS = 'APP/SET_STATUS',
-    SET_IS_INITIALIZED = 'APP/SET_IS_INITIALIZED',
+    SET_PACK_DATA = 'PACKS/SET_PACK_DATA',
 }
 
 //type
@@ -66,13 +65,34 @@ export const setPacksDataAC = (setData: PacksStateType) => {
 
 export const setDataThunk = () => {
 
-    return (dispatch: Dispatch<ActionsPacksType | ReturnType<typeof setStatus>>) => {
+    return (dispatch: Dispatch<ActionsPacksType | ReturnType<typeof setStatus> | ReturnType<typeof setError>>) => {
+        // dispatch(setStatus('loading'))
         PacksAPI.getPacks()
             .then(res => {
                 dispatch(setPacksDataAC(res.data))
+                dispatch(setStatus("succeed"))
+            })
+            .catch((err) => {
+                dispatch(setError(err.message))
+                // dispatch(setStatus('failed'))
             })
     }
+}
 
+export const setDataPackThunk = (data: PackDataModalWindowType) => {
+
+    return (dispatch: Dispatch<any>) => {
+        // dispatch(setStatus('loading'))
+        PacksAPI.setPack(data)
+            .then(res => {
+                dispatch(setDataThunk())
+                dispatch(setStatus("succeed"))
+            })
+            .catch((err) => {
+                dispatch(setError(err.message))
+                dispatch(setStatus('failed'))
+            })
+    }
 }
 
 
