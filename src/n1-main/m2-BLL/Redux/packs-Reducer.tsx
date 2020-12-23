@@ -1,10 +1,9 @@
 import {Dispatch} from "redux";
-import {PackDataModalWindowType, PacksAPI, ResponseCardsPackType} from "../../m3-DAL/api";
+import {PackDataModalWindowType, PacksAPI} from "../../m3-DAL/api";
 import {setError, setStatus} from "./app-Reducer";
 
 enum PacksActionConsts {
     SET_DATA = 'PACKS/SET_DATA',
-    SET_PACK_DATA = 'PACKS/SET_PACK_DATA',
 }
 
 //type
