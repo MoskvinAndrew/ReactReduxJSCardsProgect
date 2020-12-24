@@ -1,11 +1,11 @@
 import axios from 'axios';
 import {loginParamsType} from "../m2-BLL/login-reduser";
-import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
+import {CardPackType, PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost:7542/2.0/',
+    baseURL: 'https://neko-back.herokuapp.com/2.0',
 });
 
 export type RegisterRequestType = {
@@ -35,6 +35,32 @@ export type UserType = {
     _id: string
 }
 
+//for pack post request
+export type ResponseCardsPackType = {
+    cardsCount: number
+    created: string
+    deckCover: string
+    grade: number
+    more_id: string
+    name: string
+    path: string
+    private: boolean
+    rating: number
+    shots: number
+    type: string
+    updated: string
+    user_id: string
+    user_name: string
+    __v: number
+    _id: string
+}
+
+//type for pack data
+export type PackDataModalWindowType = {
+    name: string
+    path: string
+}
+
 type ResponseType<D = {}> = {
     status: number
     statusText: string
@@ -62,8 +88,22 @@ export const AuthAPI = {
 };
 
 export const PacksAPI = {
-    getPacks(){
+    getPacks() {
         return instance.get<PacksStateType>('/cards/pack')
+    },
+    setPack(data: PackDataModalWindowType) {
+        return instance.post<{ newCardsPack: ResponseCardsPackType }>('/cards/pack', {
+            cardsPack: {
+                name: data.name,
+                path: data.path,
+                grade: 1,
+                shots: 2,
+                rating: 2,
+                deckCover: 'string',
+                private: false,
+                type: 'pack',
+            }
+        })
     },
 
 };
