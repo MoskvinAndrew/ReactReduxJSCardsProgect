@@ -1,7 +1,8 @@
 import React from 'react';
 import {Dispatch} from "redux";
-import {loginAPI} from "../../../pages/login/loginDAL";
-import {setProfileDataAC, setProfileDataACType} from './profile-reducer';
+import {setProfileDataAC, setProfileDataACType} from "./profile-reducer";
+import {ActionsAppType, setError} from "./app-Reducer";
+import {AuthAPI} from "../../m3-DAL/api";
 
 
 const CHANGE_LOGIN_STATUS = 'loginReducer/CHANGE_LOGIN_STATUS';
@@ -46,18 +47,18 @@ export const changeLoginStatusAC = (isLoggedIn:boolean):changeLoginStatusACType 
 export const loginProcessInProgressAC = (loginProcessInProgress:boolean):loginProcessInProgressACType=>({type:'loginReducer/LOGIN_PROCESS_IN_PROGRESS',loginProcessInProgress} as const);
 
 
-export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|setProfileDataACType>)=> {
+export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|setProfileDataACType|ActionsAppType>)=> {
     dispatch(loginProcessInProgressAC(true));
-  loginAPI.login(data)
+  AuthAPI.login(data)
       .then( res => {
           dispatch(setProfileDataAC(res.data));
           dispatch(changeLoginStatusAC(true));
 
       })
-      .catch ( e=> {
+      .catch ( e => {
           const error = e.response
-            ? e.response.data.error
-            : (e.message + ', more details in the console')})
+            ? dispatch(setError(e.response.data.error))
+            : dispatch(setError(e.message + ', more details in the console'))})
     .finally(()=>{
           dispatch(loginProcessInProgressAC(false));
       })

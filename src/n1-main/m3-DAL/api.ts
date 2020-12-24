@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {loginParamsType} from "../m2-BLL/login-reduser";
-import {CardPackType, PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
+import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
+import {loginParamsType} from "../m2-BLL/Redux/login-reduser";
 
 
 const instance = axios.create({
