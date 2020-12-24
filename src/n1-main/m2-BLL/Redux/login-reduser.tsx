@@ -1,9 +1,8 @@
 import React from 'react';
 import {Dispatch} from "redux";
-import {setProfileDataAC, setProfileDataACType} from './Redux/profile-reducer';
-import {AuthAPI} from "../m3-DAL/api";
-import {ActionsAppType, setError} from "./Redux/app-Reducer";
-
+import {setProfileDataAC, setProfileDataACType} from "./profile-reducer";
+import {ActionsAppType, setError} from "./app-Reducer";
+import {AuthAPI} from "../../m3-DAL/api";
 
 const CHANGE_LOGIN_STATUS = 'loginReducer/CHANGE_LOGIN_STATUS';
 const LOGIN_PROCESS_IN_PROGRESS = 'loginReducer/LOGIN_PROCESS_IN_PROGRESS';
