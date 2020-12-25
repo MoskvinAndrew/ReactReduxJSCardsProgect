@@ -1,8 +1,8 @@
 import React from 'react';
 import {Dispatch} from "redux";
-import {setProfileDataAC, setProfileDataACType} from './Redux/profile-reducer';
-import {AuthAPI} from "../m3-DAL/api";
-import {ActionsAppType, setError} from "./Redux/app-Reducer";
+import {setProfileDataAC, setProfileDataACType} from './profile-reducer';
+import {AuthAPI} from "../../m3-DAL/api";
+import {ActionsAppType, setError} from "./app-Reducer";
 
 
 const CHANGE_LOGIN_STATUS = 'loginReducer/CHANGE_LOGIN_STATUS';
@@ -56,11 +56,12 @@ export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|s
 
       })
       .catch ( e => {
+          dispatch(loginProcessInProgressAC(false))
           const error = e.response
             ? dispatch(setError(e.response.data.error))
             : dispatch(setError(e.message + ', more details in the console'))})
     .finally(()=>{
-          dispatch(loginProcessInProgressAC(false));
+          // dispatch(loginProcessInProgressAC(false));
       })
 
 }

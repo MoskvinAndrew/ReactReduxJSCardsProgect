@@ -3,12 +3,20 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 import {authStateType} from "../../n1-main/m2-BLL/Redux/auth-Reducer";
 import {profileDataType} from "../../n1-main/m2-BLL/Redux/profile-reducer";
-import {Redirect} from "react-router-dom";
+import {Redirect, useParams} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
-const Profile: React.FC = () => {
+
+const Profile = () => {
     let isLoggedIn = useSelector<RootState,boolean>((state)=>state.login.isLoggedIn);
     let profileData = useSelector<RootState, profileDataType>(state => state.profilePage.profileData);
+
+    // const { id } = useParams();
+    // const history = useHistory();
+    // history.goBack();
+    // history.push( '/profile' );
+
 
     if(!isLoggedIn){
         return  <Redirect to={"/login"}/>
@@ -23,6 +31,7 @@ const Profile: React.FC = () => {
             <div> email:{profileData.email}</div>
             <div>created:{profileData.created}</div>
             <div> avatar:{profileData.avatar}</div>
+
         </div>
     )
 }
