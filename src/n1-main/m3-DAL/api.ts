@@ -1,11 +1,12 @@
 import axios from 'axios';
-import {loginParamsType} from "../m2-BLL/login-reduser";
+import {loginParamsType} from "../m2-BLL/Redux/login-reduser";
 import {CardPackType, PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'https://neko-back.herokuapp.com/2.0',
+    // baseURL: 'https://neko-back.herokuapp.com/2.0',
+    baseURL: 	"http://localhost:7542/2.0/"
 });
 
 export type RegisterRequestType = {

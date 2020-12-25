@@ -41,6 +41,7 @@ export const appReducer = (state: AppStateType = initialState, action: ActionsAp
 
 
 export const setError = (error: string | null) => {
+
     return {
         type: AppActionConsts.SET_ERROR,
         error
