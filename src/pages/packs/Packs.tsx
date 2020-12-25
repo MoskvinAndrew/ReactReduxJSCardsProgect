@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
-import {CardPackType, setDataThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
+import {CardPackType, deletePackThunk, setDataThunk, updatePackThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -54,6 +54,7 @@ export const Packs: React.FC<ITableProps> = (props) => {
         dispatch(setDataThunk())
     }, [isLoggedIn])
 
+
     if (!isLoggedIn) {
         return <Redirect to={'/login'}/>
     }
@@ -76,7 +77,7 @@ export const Packs: React.FC<ITableProps> = (props) => {
     const body = (
         <div className={classesModal.paper} style={modalWindowStyle}>
             <h2>Data for new pack</h2>
-            <PacksModalForm handleClose = {handleClose} />
+            <PacksModalForm handleClose={handleClose}/>
         </div>
     );
 
@@ -105,8 +106,17 @@ export const Packs: React.FC<ITableProps> = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {cardPacks.map((row) => (
-                        <TableRow key={row._id}>
+                    {cardPacks.map((row) => {
+
+                        const deleteHandler = () => {
+                            dispatch(deletePackThunk(row._id))
+                        }
+
+                        const updateHandler = () => {
+                            dispatch(updatePackThunk(row._id))
+                        }
+
+                        return <TableRow key={row._id}>
                             <TableCell component="th" scope="row">
                                 {row.name}
                             </TableCell>
@@ -114,14 +124,14 @@ export const Packs: React.FC<ITableProps> = (props) => {
                             <TableCell align="center">{row.updated}</TableCell>
                             <TableCell align="center">{row.path}</TableCell>
                             <TableCell align="center">
-                                <button>update</button>
-                                <button>delete</button>
+                                <button onClick={updateHandler}>update</button>
+                                <button onClick={deleteHandler}>delete</button>
                             </TableCell>
                             <TableCell align="center">
                                 <NavLink to={'/cards'}>cards</NavLink>
                             </TableCell>
                         </TableRow>
-                    ))}
+                    })}
                 </TableBody>
             </Table>
         </TableContainer>
