@@ -5,7 +5,7 @@ import {authReducer} from "./auth-Reducer";
 import {newPassReducer} from "./newPass-Reducer";
 import {forgotReducer} from "./forgot-Reducer";
 import {registerReducer} from "./register-Reducer";
-import {loginReducer} from "../login-reduser";
+import {loginReducer} from "../Redux/login-reduser";
 import {profileReducer} from "./profile-reducer";
 import { packsReducer } from "./packs-Reducer";
 
