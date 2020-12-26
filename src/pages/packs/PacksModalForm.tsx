@@ -3,7 +3,9 @@ import {useFormik} from "formik";
 import * as Yup from "yup";
 import {Button, FormControl, FormGroup, TextField} from "@material-ui/core";
 import {setDataPackThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -18,6 +20,7 @@ type PacksModalFormType = {
 }
 
 export const PacksModalForm: React.FC<PacksModalFormType> = (props) => {
+    const isLoggedIn = useSelector<RootState, boolean>((state) => state.login.isLoggedIn);
 
     const dispatch = useDispatch()
 
@@ -40,6 +43,9 @@ export const PacksModalForm: React.FC<PacksModalFormType> = (props) => {
     const errorStyle = {
         color: 'red',
         margin: '5px 0px',
+    }
+    if(!isLoggedIn){
+        return  <Redirect to={"/login"}/>
     }
 
     return <>

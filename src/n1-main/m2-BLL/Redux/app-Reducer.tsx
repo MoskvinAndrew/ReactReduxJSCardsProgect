@@ -1,4 +1,9 @@
 import {Dispatch} from "redux";
+import { AuthAPI } from "../../m3-DAL/api";
+import {changeLoginStatusAC} from "./login-reducer";
+import {Redirect} from "react-router-dom";
+import React from "react";
+import {setProfileDataAC} from "./profile-reducer";
 
 enum AppActionConsts {
     SET_ERROR = 'APP/SET_ERROR',
@@ -64,10 +69,31 @@ export const setIsInitializedApp = (isInitialized: boolean) => {
 export const initializedAppThunk = () => {
 
     return (dispatch: Dispatch) => {
-        // logic for auth...
-        dispatch(setIsInitializedApp(true))
+        AuthAPI.me()
+            .then( (response:any) =>{
+                console.log(response)
+                dispatch(setIsInitializedApp(true));
+                dispatch(changeLoginStatusAC(true));
+                dispatch(setProfileDataAC(response.data));                 ///Андрей это временная шляпа, нужно переделать!!!!
+            })
+            .catch((err:any)=>{
+                debugger
+                dispatch(setIsInitializedApp(true));
+                <Redirect to={"/login"}/>
+            })
     }
+}
 
+export const logOutMeTC = () => {
+
+    return (dispatch: Dispatch) => {
+        AuthAPI.logOut()
+            .then( (response:any) =>{
+                console.log(response)
+
+                dispatch(changeLoginStatusAC(false));
+            })
+    }
 }
 
 

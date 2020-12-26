@@ -1,16 +1,22 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 import {authStateType} from "../../n1-main/m2-BLL/Redux/auth-Reducer";
 import {profileDataType} from "../../n1-main/m2-BLL/Redux/profile-reducer";
 import {Redirect, useParams} from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import {logOutMeTC} from "../../n1-main/m2-BLL/Redux/app-Reducer";
 
 
 
 const Profile = () => {
     let isLoggedIn = useSelector<RootState,boolean>((state)=>state.login.isLoggedIn);
     let profileData = useSelector<RootState, profileDataType>(state => state.profilePage.profileData);
+    const dispatch = useDispatch();
+
+   const onClickHandler = () =>{
+dispatch(logOutMeTC());
+   }
 
     // const { id } = useParams();
     // const history = useHistory();
@@ -31,6 +37,7 @@ const Profile = () => {
             <div> email:{profileData.email}</div>
             <div>created:{profileData.created}</div>
             <div> avatar:{profileData.avatar}</div>
+            <button onClick={onClickHandler}>log out</button>
 
         </div>
     )

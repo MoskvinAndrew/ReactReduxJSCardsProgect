@@ -3,7 +3,7 @@ import style from "./login.module.css";
 import atom from "./../../images/atom.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
-import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reduser";
+import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reducer";
 import {Redirect, useHistory} from 'react-router-dom';
 import {
     Button,
