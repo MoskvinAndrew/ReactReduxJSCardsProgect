@@ -1,6 +1,6 @@
 import axios from 'axios';
+import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 import {loginParamsType} from "../m2-BLL/Redux/login-reduser";
-import {CardPackType, PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 
 
 const instance = axios.create({
@@ -89,10 +89,10 @@ export const AuthAPI = {
 
 export const PacksAPI = {
     getPacks() {
-        return instance.get<PacksStateType>('/cards/pack')
+        return instance.get<PacksStateType>('cards/pack')
     },
     setPack(data: PackDataModalWindowType) {
-        return instance.post<{ newCardsPack: ResponseCardsPackType }>('/cards/pack', {
+        return instance.post<{ newCardsPack: ResponseCardsPackType }>('cards/pack', {
             cardsPack: {
                 name: data.name,
                 path: data.path,
@@ -105,5 +105,22 @@ export const PacksAPI = {
             }
         })
     },
-
+    deletePack(packId: string) {
+        return instance.delete<{ deletedCardsPack: ResponseCardsPackType }>(`cards/pack?id=${packId}`)
+    },
+    updatePack(packId: string) {
+        return instance.put<{ updatedCardsPack: ResponseCardsPackType }>(`cards/pack`, {
+            cardsPack: {
+                _id: packId,
+                name: 'updated keker',
+                path: 'updated path',
+                grade: 1,
+                shots: 2,
+                rating: 2,
+                deckCover: 'string',
+                private: false,
+                type: 'pack',
+            }
+        })
+    },
 };

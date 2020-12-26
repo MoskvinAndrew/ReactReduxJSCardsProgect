@@ -10,9 +10,10 @@ export const RegistrationComponent: React.FC = () => {
     const isLoggedIn = useSelector<RootState, boolean>(state => state.login.isLoggedIn);
 
 
-    if (isSignedUp) {
-        return <Redirect to={'/login'}/>
-    } else if(isLoggedIn){
+    // if (isSignedUp) {
+    //     return <Redirect to={'/login'}/>
+    // }
+     if(isLoggedIn){
         return <Redirect to={'/profile'} />
     }
 

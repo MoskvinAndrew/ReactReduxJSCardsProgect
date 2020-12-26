@@ -94,5 +94,37 @@ export const setDataPackThunk = (data: PackDataModalWindowType) => {
     }
 }
 
+export const deletePackThunk = (packId: string) => {
+
+    return (dispatch: Dispatch<any>) => {
+        // dispatch(setStatus('loading'))
+        PacksAPI.deletePack(packId)
+            .then(res => {
+                dispatch(setDataThunk())
+                dispatch(setStatus("succeed"))
+            })
+            .catch((err) => {
+                dispatch(setError(err.message))
+                dispatch(setStatus('failed'))
+            })
+    }
+}
+
+export const updatePackThunk = (packId:string) => {
+
+    return (dispatch: Dispatch<any>) => {
+        // dispatch(setStatus('loading'))
+        PacksAPI.updatePack(packId)
+            .then(res => {
+                dispatch(setDataThunk())
+                dispatch(setStatus("succeed"))
+            })
+            .catch((err) => {
+                dispatch(setError(err.message))
+                dispatch(setStatus('failed'))
+            })
+    }
+}
+
 
 

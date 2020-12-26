@@ -56,11 +56,12 @@ export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|s
 
       })
       .catch ( e => {
+          dispatch(loginProcessInProgressAC(false))
           const error = e.response
             ? dispatch(setError(e.response.data.error))
             : dispatch(setError(e.message + ', more details in the console'))})
     .finally(()=>{
-          dispatch(loginProcessInProgressAC(false));
+          // dispatch(loginProcessInProgressAC(false));
       })
 
 }

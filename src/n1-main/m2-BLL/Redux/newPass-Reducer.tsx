@@ -39,6 +39,7 @@ export const newPassReducer = (state = NewPassInitState, action:NewPassActionsTy
 };
 
 export const newPassThunk = (data: NewPassRequestType) => {
+    debugger
 
     return (dispatch: Dispatch<NewPassActionsType | ActionsAppType>) => {
 
