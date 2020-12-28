@@ -1,43 +1,41 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
-import {authStateType} from "../../n1-main/m2-BLL/Redux/auth-Reducer";
 import {profileDataType} from "../../n1-main/m2-BLL/Redux/profile-reducer";
 import {Redirect, useParams} from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import {logOutMeTC} from "../../n1-main/m2-BLL/Redux/app-Reducer";
+import { RoutingStringConstants } from '../../n1-main/m3-DAL/routingStringConstants';
+import {useDispatch} from "react-redux";
+import style from "./profile.module.css"
+import { Button } from '@material-ui/core';
 
+type ProfileType = {
+    isLoggedIn:boolean,
+    profileData:profileDataType,
 
+}
 
-const Profile = () => {
-    let isLoggedIn = useSelector<RootState,boolean>((state)=>state.login.isLoggedIn);
-    let profileData = useSelector<RootState, profileDataType>(state => state.profilePage.profileData);
+const Profile = (props:ProfileType) => {
     const dispatch = useDispatch();
 
+
    const onClickHandler = () =>{
-dispatch(logOutMeTC());
-   }
-
-    // const { id } = useParams();
-    // const history = useHistory();
-    // history.goBack();
-    // history.push( '/profile' );
+       dispatch(logOutMeTC());
+   };
 
 
-    if(!isLoggedIn){
-        return  <Redirect to={"/login"}/>
+    if(!props.isLoggedIn){
+        return  <Redirect to={RoutingStringConstants.login}/>
     }
     return (
-        <div>
-            It's profile component:
-            <div> name:{profileData.name}</div>
-            <div>isAdmin:{profileData.isAdmin}</div>
-            <div> id:{profileData._id}</div>
-            <div> publicCardPacksCount:{profileData.publicCardPacksCount}</div>
-            <div> email:{profileData.email}</div>
-            <div>created:{profileData.created}</div>
-            <div> avatar:{profileData.avatar}</div>
-            <button onClick={onClickHandler}>log out</button>
+        <div className={style.profileWrapper}>
+            <div>It's profile component:</div>
+
+            <div className={style.content}>
+                <div> <b>name</b>:{props.profileData.name}</div>
+                <div> <b>publicCardPacksCount</b>:{props.profileData.publicCardPacksCount}</div>
+            </div>
+            {/*<div className={style.avatar}> avatar:{props.profileData.avatar}</div>*/}
+
+            <Button className={style.buttonLogOut} variant={"contained"} onClick={onClickHandler}>log out</Button>
 
         </div>
     )

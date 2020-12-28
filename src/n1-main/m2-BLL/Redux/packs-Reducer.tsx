@@ -39,7 +39,7 @@ const initialState = {
     maxCardsCount: 25,
     minCardsCount: 0,
     page: 1,
-    pageCount: 4,
+    pageCount: 6,
     token: "",
     tokenDeathTime: 0,
 };

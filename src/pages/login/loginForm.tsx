@@ -21,7 +21,7 @@ import {AlertComponent} from "../../n2-features/f3-errorSnackBar/errorHandler";
 import loading from "./../../images/hzk6C.gif"
 
 
-const Login = () => {
+const LoginForm = () => {
     const error = useSelector<RootState, string|null>(state => state.app.error);
 
     const loginProcessInProgress = useSelector<RootState, boolean>(state => state.login.loginProcessInProgress);
@@ -149,4 +149,4 @@ const Login = () => {
     </div>
 
 }
-export default Login;
+export default LoginForm;

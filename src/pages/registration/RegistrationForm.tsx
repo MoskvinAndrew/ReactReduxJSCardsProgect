@@ -30,10 +30,6 @@ const validationSchema = yup.object().shape({
 
 export const RegistrationForm: React.FC<RegistrationPropsType> = () => {
     const error = useSelector<RootState, string|null>(state => state.app.error);
-    // const statusApp = useSelector<RootState, string|null>(state => state.app.status);
-
-
-
     const dispatch = useDispatch();
 
     const formik = useFormik({
