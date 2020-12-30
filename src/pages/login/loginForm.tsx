@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import style from "./login.module.css";
-
+import atom from "./../../images/atom.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
-import {Redirect} from 'react-router-dom';
+import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reducer";
+import {Redirect, useHistory} from 'react-router-dom';
 import {
     Button,
     Checkbox,
@@ -15,18 +16,41 @@ import {
     TextField
 } from "@material-ui/core";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
-import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reduser";
+import {RoutingStringConstants} from "../../n1-main/m3-DAL/routingStringConstants";
+import {AlertComponent} from "../../n2-features/f3-errorSnackBar/errorHandler";
+import loading from "./../../images/hzk6C.gif"
 
 
-const Login = () => {
+const LoginForm = () => {
+    const error = useSelector<RootState, string|null>(state => state.app.error);
+
     const loginProcessInProgress = useSelector<RootState, boolean>(state => state.login.loginProcessInProgress);
-    let isLoggedIn = useSelector<RootState, boolean>((state) => state.login.isLoggedIn);
-    let dispatch = useDispatch();
+    const isLoggedIn = useSelector<RootState, boolean>((state) => state.login.isLoggedIn);
+    const dispatch = useDispatch();
+
+
+    const history = useHistory();
+
+
+
+    const redirectFuncForgotPassword = () => {
+        history.push(RoutingStringConstants.passwordRecovery);
+        };
+    const redirectFuncRegister = () => {
+        history.push(RoutingStringConstants.registration);
+
+    };
+
+    const errorStyle = {
+        color: 'red',
+        margin: '5px 0px',
+    }
 
 
     const formik = useFormik({
         validate: (values) => {
             if (!values.email) return {email: "email is required"};
+            if (!values.email.split("").includes('@')) return {email: "enter correct email"};
             if (!values.password)
                 return {password: "password is required"}
 
@@ -50,31 +74,45 @@ const Login = () => {
     })
 
     if (isLoggedIn) {
-        return <Redirect to={"/profile"}/>
-    }
+        return <Redirect to={RoutingStringConstants.profile}/>
+    };
     return <div className={style.wrapper}>
+
+
+        {/*{loginProcessInProgress ? <div className={style.overlay}>*/}
+        {/*    <img src= {loading}/>*/}
+        {/*</div>:<div className={style.logo}>*/}
+        {/*    <img src={atom}/>*/}
+        {/*    <h1 className={style.LogoName}>React Education Cards</h1>*/}
+        {/*</div>}*/}
+
+
+        <div className={style.logo}>
+            {loginProcessInProgress ?<img className={style.loadingImg} src= {loading}/>:<img src={atom}/>}
+            <h1 className={style.LogoName}>React Education Cards</h1>
+        </div>
+
+
         <Grid container justify="center">
             <Grid item xs={4}>
                 <form onSubmit={formik.handleSubmit}>
                     <FormControl>
                         <FormLabel>
-                            <p>To log in get registered
-                                <a href={'https://social-network.samuraijs.com/'}
-                                   target={'_blank'}>here
-                                </a>
-                            </p>
-                            <p>or use common test account credentials:</p>
-                            <p>Email: nya-admin@nya.nya</p>
-                            <p>Password: 1qazxcvBG</p>
-                            <h1>Signup</h1>
+                            <h2 className={style.LogoText}>SignUp</h2>
                         </FormLabel>
                         <FormGroup>
                             <TextField
+                                aria-hidden={loginProcessInProgress}
+                                size="medium"
                                 type="email"
                                 label="Email"
                                 {...formik.getFieldProps('email')}
                             />
-                            {formik.errors.email ? formik.errors.email : null}
+                            {/*{formik.errors.email ? formik.errors.email : null}*/}
+
+                            {formik.errors.email && formik.touched.email ?
+                                <div style={errorStyle}>{formik.errors.email}</div> : null}
+
                             <TextField
                                 id="password"
                                 // type="password"
@@ -94,15 +132,21 @@ const Login = () => {
                             />
                             <Button type={'submit'} variant={'contained'} color={'primary'}
                                     disabled={loginProcessInProgress}>Login</Button>
-                            <h4>
-                                <a>Forgot password?</a>
+                            <h4 >
+                                <p  className={style.forgotPasswordLink} onClick={redirectFuncForgotPassword}>Forgot
+                                    password?
+                                </p>
+                                <p  className={style.forgotPasswordLink} onClick={redirectFuncRegister}>Registration
+                                </p>
                             </h4>
                         </FormGroup>
                     </FormControl>
                 </form>
+                {error && <AlertComponent/>}
             </Grid>
         </Grid>
+
     </div>
 
 }
-export default Login;
+export default LoginForm;

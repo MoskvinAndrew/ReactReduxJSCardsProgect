@@ -56,14 +56,16 @@ export const registerThunk = (data: RegisterRequestType) => {
                 dispatch(setIsSignedUp(true));
                 dispatch(setStatus('succeed'))
             })
-            .catch(err => {
-                dispatch(setError(err));
-                dispatch(setStatus('failed'))
-            })
+            .catch( e => {
+                dispatch(setStatus('succeed'))
+                const error = e.response
+                    ? dispatch(setError(e.response.data.error))
+                    : dispatch(setError(e.message + ', more details in the console'))})
     }
 };
 
-
+// dispatch(setError(err));
+// dispatch(setStatus('failed'))
 
 
 
