@@ -6,6 +6,7 @@ import {loginParamsType} from "../m2-BLL/Redux/login-reduser";
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://neko-back.herokuapp.com/2.0',
+    // baseURL: '"http://localhost:7542/2.0/"	',
 });
 
 export type RegisterRequestType = {
@@ -85,11 +86,28 @@ export const AuthAPI = {
         const promise = instance.post('auth/login', data);
         return promise;
     },
+    me() {
+        const promise = instance.post('auth/me');
+        return promise;
+    },
+    logOut() {
+        const promise = instance.delete('auth/me');
+        return promise;
+    },
 };
 
 export const PacksAPI = {
-    getPacks() {
-        return instance.get<PacksStateType>('cards/pack')
+    getPacks(packName?: string, minPacks?: number, maxPacks?: number, sortPacks?: string, page?: number, pageCount?: number) {
+        return instance.get<PacksStateType>(`cards/pack`, {
+            params: {
+                packName: packName,
+                min: minPacks,
+                max: maxPacks,
+                sortPacks: sortPacks,
+                page: page,
+                pageCount: pageCount,
+            }
+        })
     },
     setPack(data: PackDataModalWindowType) {
         return instance.post<{ newCardsPack: ResponseCardsPackType }>('cards/pack', {

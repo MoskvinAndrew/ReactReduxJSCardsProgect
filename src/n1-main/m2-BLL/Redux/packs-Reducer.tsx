@@ -66,7 +66,7 @@ export const setDataThunk = () => {
 
     return (dispatch: Dispatch<ActionsPacksType | ReturnType<typeof setStatus> | ReturnType<typeof setError>>) => {
         // dispatch(setStatus('loading'))
-        PacksAPI.getPacks()
+        PacksAPI.getPacks('PTSerif')
             .then(res => {
                 dispatch(setPacksDataAC(res.data))
                 dispatch(setStatus("succeed"))
