@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {profileDataType} from "../../n1-main/m2-BLL/Redux/profile-reducer";
 import {Redirect, useParams} from "react-router-dom";
 import {logOutMeTC} from "../../n1-main/m2-BLL/Redux/app-Reducer";
@@ -20,6 +20,8 @@ const Profile = (props:ProfileType) => {
    const onClickHandler = () =>{
        dispatch(logOutMeTC());
    };
+
+  
 
 
     if(!props.isLoggedIn){
