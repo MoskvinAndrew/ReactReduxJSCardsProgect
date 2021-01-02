@@ -9,6 +9,7 @@ export const Nav = () => {
             <NavLink to={'/login'}>Login</NavLink>
             <NavLink to={'/profile'}>Profile</NavLink>
             <NavLink to={'/packs'}>Packs of cards</NavLink>
+            <NavLink to={'/cards'}>Cards</NavLink>
             <NavLink to={'/passwordRecovery'}>Reset Password</NavLink>
             <NavLink to={'/newPassword'}>New password</NavLink>
             <NavLink to={'/testPage'}>TestPage</NavLink>
