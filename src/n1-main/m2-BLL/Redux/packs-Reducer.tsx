@@ -66,7 +66,7 @@ export const setDataThunk = () => {
 
     return (dispatch: Dispatch<ActionsPacksType | ReturnType<typeof setStatus> | ReturnType<typeof setError>>) => {
         // dispatch(setStatus('loading'))
-        PacksAPI.getPacks('PTSerif')
+        PacksAPI.getPacks()
             .then(res => {
                 dispatch(setPacksDataAC(res.data))
                 dispatch(setStatus("succeed"))
@@ -76,7 +76,7 @@ export const setDataThunk = () => {
                 // dispatch(setStatus('failed'))
             })
     }
-}
+};
 
 export const setDataPackThunk = (data: PackDataModalWindowType) => {
 
@@ -92,7 +92,7 @@ export const setDataPackThunk = (data: PackDataModalWindowType) => {
                 dispatch(setStatus('failed'))
             })
     }
-}
+};
 
 export const deletePackThunk = (packId: string) => {
 
@@ -108,13 +108,13 @@ export const deletePackThunk = (packId: string) => {
                 dispatch(setStatus('failed'))
             })
     }
-}
+};
 
-export const updatePackThunk = (packId:string) => {
+export const updatePackThunk = (packId:string, name: string) => {
 
     return (dispatch: Dispatch<any>) => {
         // dispatch(setStatus('loading'))
-        PacksAPI.updatePack(packId)
+        PacksAPI.updatePack(packId, name)
             .then(res => {
                 dispatch(setDataThunk())
                 dispatch(setStatus("succeed"))
@@ -124,7 +124,7 @@ export const updatePackThunk = (packId:string) => {
                 dispatch(setStatus('failed'))
             })
     }
-}
+};
 
 
 

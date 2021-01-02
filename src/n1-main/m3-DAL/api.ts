@@ -3,7 +3,6 @@ import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 import {loginParamsType} from "../m2-BLL/Redux/login-reducer";
 
 
-
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://neko-back.herokuapp.com/2.0',
@@ -60,7 +59,6 @@ export type ResponseCardsPackType = {
 //type for pack data
 export type PackDataModalWindowType = {
     name: string
-    path: string
 }
 
 type ResponseType<D = {}> = {
@@ -114,7 +112,7 @@ export const PacksAPI = {
         return instance.post<{ newCardsPack: ResponseCardsPackType }>('cards/pack', {
             cardsPack: {
                 name: data.name,
-                path: data.path,
+                path: '/def',
                 grade: 1,
                 shots: 2,
                 rating: 2,
@@ -127,12 +125,12 @@ export const PacksAPI = {
     deletePack(packId: string) {
         return instance.delete<{ deletedCardsPack: ResponseCardsPackType }>(`cards/pack?id=${packId}`)
     },
-    updatePack(packId: string) {
+    updatePack(packId: string, name: string = 'updated name') {
         return instance.put<{ updatedCardsPack: ResponseCardsPackType }>(`cards/pack`, {
             cardsPack: {
                 _id: packId,
-                name: 'updated keker',
-                path: 'updated path',
+                name,
+                path: '/def',
                 grade: 1,
                 shots: 2,
                 rating: 2,
