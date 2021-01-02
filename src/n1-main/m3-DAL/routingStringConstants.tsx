@@ -6,6 +6,9 @@ export const RoutingStringConstants = {
     profile:"/profile",
     passwordRecovery:"/passwordRecovery",
     registration:"/registration",
-
+    packs:"/packs",
+    newPassword:"/newPassword",
+    testPage:"/testPage",
+    cards:"/cards"
 }
 

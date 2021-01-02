@@ -1,0 +1,23 @@
+.profileWrapper{
+    border:1px solid green;
+    display: flex;
+flex-direction: column;
+
+}
+.content{
+    /*border:1px solid #486ffc;*/
+    display:flex;
+    flex-direction: column;
+    align-self: start;
+   align-items: start;
+    margin-bottom: 20px;
+}
+.avatar{
+    /*border:1px solid #486ffc;*/
+    display: flex;
+    align-self: end;
+    align-items: end;
+}
+.buttonLogOut{
+   width: 100px;
+}

@@ -1,106 +1,85 @@
 import {Dispatch} from "redux";
-import {CardsDataModalWindowType, CardsAPI} from "../../m3-DAL/api";
+import {CardModalWindowType, CardsAPI} from "../../m3-DAL/api";
 import {setError, setStatus} from "./app-Reducer";
-
-enum CardsActionConsts {
-    SET_DATA = 'СARDS/SET_DATA',
-}
 
 //type
 
-export type CardPackType = {
-    cardsCount: number
-    created: string
-    deckCover: string
-    grade: number
-    more_id: string
-    name: string
-    path: string
-    private: boolean
-    rating: number
-    shots: number
-    type: string
-    updated: string
-    user_id: string
-    user_name: string
-    __v: number
-    _id: string
+export type CardType = {
+    _id: string;
+    cardsPack_id: string;
+    user_id: string;
+
+    answer: string;
+    question: string;
+    grade: number;
+    shots: number;
+
+    questionImg: string;
+    answerImg: string;
+    answerVideo: string;
+    questionVideo: string;
+
+    comments: string;
+
+    type: string;
+    rating: number;
+    more_id: string;
+
+    created: string;
+    updated: string;
 }
 
-export type ActionsPacksType = ReturnType<typeof setPacksDataAC> ;
+export type CardsStateType = {
+    cards: CardType[];
+}
 
-export type PacksStateType = typeof initialState;
-
-//---type---
-
-const initialState = {
-    cardPacks: [] as CardPackType[],
-    cardPacksTotalCount: 0,
-    maxCardsCount: 25,
-    minCardsCount: 0,
-    page: 1,
-    pageCount: 4,
-    token: "",
-    tokenDeathTime: 0,
+export const CardsInitState: CardsStateType = {
+    cards: [],
 };
 
-export const packsReducer = (state: PacksStateType = initialState, action: ActionsPacksType): PacksStateType => {
+export type ActionsCardsType = ReturnType<typeof setCardsDataAC> ;
+
+
+export const cardsReducer = (state = CardsInitState, action: ActionsCardsType): CardsStateType => {
     switch (action.type) {
-        case PacksActionConsts.SET_DATA:
-            return {...state, ...action.setData, cardPacks: action.setData.cardPacks}
+        case "cards/SET_CARDS":
+            return {...state,
+                    cards: action.cards}
         default:
             return state
     }
 };
 
 
-export const setPacksDataAC = (setData: PacksStateType) => {
+export const setCardsDataAC = (cards: CardType[]) => {
     return {
-        type: PacksActionConsts.SET_DATA,
-        setData
+        type: "cards/SET_CARDS",
+        cards,
     } as const
 };
 
 
-export const setDataThunk = () => {
+export const getCardThunk = (id: string) => {
 
-    return (dispatch: Dispatch<ActionsPacksType | ReturnType<typeof setStatus> | ReturnType<typeof setError>>) => {
-        // dispatch(setStatus('loading'))
-        PacksAPI.getPacks()
+    return (dispatch: Dispatch<ActionsCardsType | ReturnType<typeof setStatus> | ReturnType<typeof setError>>) => {
+        CardsAPI.getCards(id)
             .then(res => {
-                dispatch(setPacksDataAC(res.data))
+                dispatch(setCardsDataAC(res.data.cards))
                 dispatch(setStatus("succeed"))
             })
             .catch((err) => {
                 dispatch(setError(err.message))
-                // dispatch(setStatus('failed'))
             })
     }
 }
 
-export const setDataPackThunk = (data: PackDataModalWindowType) => {
+export const addCardsThunk = (data: CardModalWindowType) => {
 
     return (dispatch: Dispatch<any>) => {
         // dispatch(setStatus('loading'))
-        PacksAPI.setPack(data)
+        CardsAPI.addCard(data)
             .then(res => {
-                dispatch(setDataThunk())
-                dispatch(setStatus("succeed"))
-            })
-            .catch((err) => {
-                dispatch(setError(err.message))
-                dispatch(setStatus('failed'))
-            })
-    }
-}
-
-export const deletePackThunk = (packId: string) => {
-
-    return (dispatch: Dispatch<any>) => {
-        // dispatch(setStatus('loading'))
-        PacksAPI.deletePack(packId)
-            .then(res => {
-                dispatch(setDataThunk())
+                dispatch(getCardThunk(res.data))
                 dispatch(setStatus("succeed"))
             })
             .catch((err) => {
@@ -110,13 +89,28 @@ export const deletePackThunk = (packId: string) => {
     }
 }
 
-export const updatePackThunk = (packId:string) => {
+export const deleteCardThunk = (id: string, pack_id: string) => {
+
+    return (dispatch: Dispatch<any>) => {
+        CardsAPI.deleteCard(id)
+            .then(res => {
+                dispatch(getCardThunk(pack_id))
+                dispatch(setStatus("succeed"))
+            })
+            .catch((err) => {
+                dispatch(setError(err.message))
+                dispatch(setStatus('failed'))
+            })
+    }
+}
+
+export const updateCardThunk = (id: string, pack_id: string) => {
 
     return (dispatch: Dispatch<any>) => {
         // dispatch(setStatus('loading'))
-        PacksAPI.updatePack(packId)
+        CardsAPI.updateCard(id)
             .then(res => {
-                dispatch(setDataThunk())
+                dispatch(getCardThunk(pack_id))
                 dispatch(setStatus("succeed"))
             })
             .catch((err) => {

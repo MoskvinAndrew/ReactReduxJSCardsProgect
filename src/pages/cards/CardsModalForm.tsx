@@ -6,20 +6,21 @@ import {setDataPackThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
+import {addCardsThunk} from "../../n1-main/m2-BLL/Redux/cards-Reducer";
 
-const validationSchema = Yup.object().shape({
-    name: Yup.string()
-        .min(5, '5 char or more')
-        .required('name is Required'),
-    path: Yup.string()
-        .required('path is Required'),
-});
+// const validationSchema = Yup.object().shape({
+//     question: Yup.string()
+//         // .min(5, '5 char or more')
+//         .required('name is Required'),
+//     answer: Yup.string()
+//         .required('path is Required'),
+// });
 
 type PacksModalFormType = {
     handleClose: () => void
 }
 
-export const PacksModalForm: React.FC<PacksModalFormType> = (props) => {
+export const CardsModalForm: React.FC<PacksModalFormType> = (props) => {
     const isLoggedIn = useSelector<RootState, boolean>((state) => state.login.isLoggedIn);
 
     const dispatch = useDispatch()
@@ -30,12 +31,12 @@ export const PacksModalForm: React.FC<PacksModalFormType> = (props) => {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
-            path: '',
+            question: '',
+            answer: '',
         },
-        validationSchema,
+        // validationSchema,
         onSubmit: (values) => {
-            dispatch(setDataPackThunk(values))
+            dispatch(addCardsThunk(values))
             onClickHandler()
         },
     });
@@ -53,20 +54,20 @@ export const PacksModalForm: React.FC<PacksModalFormType> = (props) => {
             <FormControl size={'small'}>
                 <FormGroup>
                     <TextField
-                        label="name"
+                        label="question"
                         margin="normal"
-                        {...formik.getFieldProps('name')}
+                        {...formik.getFieldProps('question')}
                     />
-                    {formik.errors.name && formik.touched.name ?
-                        <div style={errorStyle}>{formik.errors.name}</div> : null}
+                    {formik.errors.question && formik.touched.question ?
+                        <div style={errorStyle}>{formik.errors.question}</div> : null}
                     <TextField
                         type="text"
-                        label="path"
+                        label="answer"
                         margin="normal"
-                        {...formik.getFieldProps('path')}
+                        {...formik.getFieldProps('answer')}
                     />
-                    {formik.errors.path && formik.touched.path ?
-                        <div style={errorStyle}>{formik.errors.path}</div> : null}
+                    {formik.errors.answer && formik.touched.answer ?
+                        <div style={errorStyle}>{formik.errors.answer}</div> : null}
                     <Button type={'submit'}  variant={'contained'}
                             color={'primary'}>Add</Button>
                 </FormGroup>

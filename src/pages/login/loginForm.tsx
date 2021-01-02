@@ -3,7 +3,7 @@ import style from "./login.module.css";
 import atom from "./../../images/atom.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
-import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reduser";
+import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reducer";
 import {Redirect, useHistory} from 'react-router-dom';
 import {
     Button,
@@ -21,7 +21,7 @@ import {AlertComponent} from "../../n2-features/f3-errorSnackBar/errorHandler";
 import loading from "./../../images/hzk6C.gif"
 
 
-const Login = () => {
+const LoginForm = () => {
     const error = useSelector<RootState, string|null>(state => state.app.error);
 
     const loginProcessInProgress = useSelector<RootState, boolean>(state => state.login.loginProcessInProgress);
@@ -149,4 +149,4 @@ const Login = () => {
     </div>
 
 }
-export default Login;
+export default LoginForm;

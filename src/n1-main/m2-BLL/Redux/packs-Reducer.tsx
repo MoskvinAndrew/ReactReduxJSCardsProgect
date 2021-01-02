@@ -39,7 +39,7 @@ const initialState = {
     maxCardsCount: 25,
     minCardsCount: 0,
     page: 1,
-    pageCount: 4,
+    pageCount: 6,
     token: "",
     tokenDeathTime: 0,
 };
@@ -66,7 +66,7 @@ export const setDataThunk = () => {
 
     return (dispatch: Dispatch<ActionsPacksType | ReturnType<typeof setStatus> | ReturnType<typeof setError>>) => {
         // dispatch(setStatus('loading'))
-        PacksAPI.getPacks()
+        PacksAPI.getPacks('PTSerif')
             .then(res => {
                 dispatch(setPacksDataAC(res.data))
                 dispatch(setStatus("succeed"))
