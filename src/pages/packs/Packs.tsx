@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
-import {CardPackType, setDataThunk, updatePackThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
+import {CardPackType, setDataThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -19,7 +19,6 @@ import {UpdatePacksModalForm} from "./UpdatePacksModalForm";
 
 interface ITableProps {
 }
-
 
 const useModalStyles = makeStyles((theme: Theme) =>
     createStyles({
