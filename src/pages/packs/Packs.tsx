@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
-import {CardPackType, deletePackThunk, setDataThunk, updatePackThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
+import {CardPackType, setDataThunk} from "../../n1-main/m2-BLL/Redux/packs-Reducer";
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,12 +12,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {Modal} from "@material-ui/core";
-import {PacksModalForm} from "./PacksModalForm";
+import {AddPacksModalForm} from "./AddPacksModalForm";
+import {DeletePacksModalForm} from "./DeletePacksModalForm";
+import {UpdatePacksModalForm} from "./UpdatePacksModalForm";
 
 
 interface ITableProps {
 }
-
 
 const useModalStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -43,8 +44,11 @@ export const Packs: React.FC<ITableProps> = (props) => {
     const classesTable = useTableStyles();
     const classesModal = useModalStyles();
 
-    //for modal window
-    const [open, setOpen] = useState(false);
+    //for modal windows
+    const [openAddPack, setAddPackOpen] = useState(false);
+    const [openDeleteModalPack, setDeletePackOpen] = useState(false);
+    const [openUpdateModalPack, setUpdatePackOpen] = useState(false);
+    const [packId, setPackId] = useState('');
 
     let isLoggedIn = useSelector<RootState, boolean>(state => state.login.isLoggedIn)
     let cardPacks = useSelector<RootState, CardPackType[]>(state => state.packsPage.cardPacks)
@@ -59,12 +63,33 @@ export const Packs: React.FC<ITableProps> = (props) => {
         return <Redirect to={'/login'}/>
     }
 
-    const handleOpen = () => {
-        setOpen(true);
+    //add pack modal
+    const handleAddPackOpen = () => {
+        setAddPackOpen(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    //delete pack modal
+    const handleDeletePackOpen = (packId: string) => {
+        setDeletePackOpen(true);
+        setPackId(packId)
+    };
+    //update pack modal
+    const handleUpdatePackOpen = (packId: string) => {
+        setUpdatePackOpen(true);
+        setPackId(packId)
+    };
+
+    //add pack modal
+    const handleCloseAddPackModal = () => {
+        setAddPackOpen(false);
+    };
+    //delete pack modal
+    const handleCloseDeleteModal = () => {
+        setDeletePackOpen(false);
+    };
+    //update pack modal
+    const handleCloseUpdateModal = () => {
+        setUpdatePackOpen(false);
     };
 
     const modalWindowStyle: CSSModule = {
@@ -74,22 +99,49 @@ export const Packs: React.FC<ITableProps> = (props) => {
         alignItems: 'center',
     }
 
-    const body = (
+    const addModalBody = (
         <div className={classesModal.paper} style={modalWindowStyle}>
             <h2>Data for new pack</h2>
-            <PacksModalForm handleClose={handleClose}/>
+            <AddPacksModalForm handleClose={handleCloseAddPackModal}/>
         </div>
     );
 
     return <>
+        {/*delete modal body*/}
         <Modal
-            open={open}
-            onClose={handleClose}
+            open={openDeleteModalPack}
+            onClose={handleCloseDeleteModal}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             style={modalWindowStyle}
         >
-            {body}
+            <div className={classesModal.paper} style={modalWindowStyle}>
+                <h4>Are you sure that you want to delete this pack?</h4>
+                <DeletePacksModalForm id={packId} handleClose={handleCloseDeleteModal}/>
+            </div>
+        </Modal>
+        {/*update pack modal*/}
+        <Modal
+            open={openUpdateModalPack}
+            onClose={handleCloseUpdateModal}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            style={modalWindowStyle}
+        >
+            <div className={classesModal.paper} style={modalWindowStyle}>
+                <h2>Update pack of cards</h2>
+                <UpdatePacksModalForm id={packId} handleClose={handleCloseUpdateModal}/>
+            </div>
+        </Modal>
+        {/*add pack modal*/}
+        <Modal
+            open={openAddPack}
+            onClose={handleCloseAddPackModal}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            style={modalWindowStyle}
+        >
+            {addModalBody}
         </Modal>
         <TableContainer component={Paper}>
             <Table className={classesTable.table} aria-label="simple table">
@@ -100,7 +152,7 @@ export const Packs: React.FC<ITableProps> = (props) => {
                         <TableCell align="center">Update</TableCell>
                         <TableCell align="center">link</TableCell>
                         <TableCell align="center">
-                            <button onClick={handleOpen}>add pack</button>
+                            <button onClick={handleAddPackOpen}>add pack</button>
                         </TableCell>
                         <TableCell align="center"></TableCell>
                     </TableRow>
@@ -109,12 +161,12 @@ export const Packs: React.FC<ITableProps> = (props) => {
                     {cardPacks.map((row) => {
 
                         const deleteHandler = () => {
-                            dispatch(deletePackThunk(row._id))
-                        }
+                            handleDeletePackOpen(row._id)
+                        };
 
                         const updateHandler = () => {
-                            dispatch(updatePackThunk(row._id))
-                        }
+                            handleUpdatePackOpen(row._id)
+                        };
 
                         return <TableRow key={row._id}>
                             <TableCell component="th" scope="row">

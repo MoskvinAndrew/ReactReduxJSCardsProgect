@@ -77,6 +77,7 @@ export const initializedAppThunk = () => {
                 dispatch(setProfileDataAC(response.data));                 ///Андрей это временная шляпа, нужно переделать!!!!
             })
             .catch((err:any)=>{
+                debugger
                 dispatch(setIsInitializedApp(true));
                 <Redirect to={"/login"}/>
             })

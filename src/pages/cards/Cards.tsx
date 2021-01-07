@@ -13,7 +13,6 @@ import Paper from '@material-ui/core/Paper';
 import {Modal} from "@material-ui/core";
 import {CardsModalForm} from "./CardsModalForm";
 import {CardType, deleteCardThunk, getCardThunk, updateCardThunk} from "../../n1-main/m2-BLL/Redux/cards-Reducer";
-import Search from "../../n1-main/m1-UI/common/Search/Search";
 
 
 interface ITableProps {
@@ -94,7 +93,7 @@ export const Cards: React.FC<ITableProps> = (props) => {
         >
             {body}
         </Modal>
-        <Search/>
+
         <TableContainer component={Paper}>
             <Table className={classesTable.table} aria-label="simple table">
                 <TableHead>

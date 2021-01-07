@@ -4,11 +4,10 @@ import {loginParamsType} from "../m2-BLL/Redux/login-reducer";
 import {CardType} from "../m2-BLL/Redux/cards-Reducer";
 
 
-
 const instance = axios.create({
     withCredentials: true,
-     //baseURL: 'https://neko-back.herokuapp.com/2.0',
-    baseURL: 'http://localhost:7542/2.0/',
+    baseURL: 'https://neko-back.herokuapp.com/2.0',
+    // baseURL: '"http://localhost:7542/2.0/"	',
 });
 
 export type RegisterRequestType = {
@@ -61,13 +60,6 @@ export type ResponseCardsPackType = {
 //type for pack data
 export type PackDataModalWindowType = {
     name: string
-    path: string
-}
-
-export type CardModalWindowType = {
-    // cardsPack_id: string
-    question: string
-    answer: string
 }
 
 type ResponseType<D = {}> = {
@@ -76,11 +68,17 @@ type ResponseType<D = {}> = {
     data: D
 }
 
+export type CardModalWindowType = {
+    // cardsPack_id: string
+    question: string
+    answer: string
+}
 
 export type GetDataType = {
     cards: CardType[];
     error: string;
 }
+
 
 export const AuthAPI = {
     register(data: RegisterRequestType) {
@@ -114,13 +112,12 @@ export const PacksAPI = {
     getPacks(packName?: string, minPacks?: number, maxPacks?: number, sortPacks?: string, page?: number, pageCount?: number) {
         return instance.get<PacksStateType>(`cards/pack`, {
             params: {
-                // packName: packName,
+                packName: packName,
                 min: minPacks,
                 max: maxPacks,
                 sortPacks: sortPacks,
                 page: page,
-                // pageCount: pageCount,
-                pageCount: 1000,
+                pageCount: pageCount,
             }
         })
     },
@@ -128,7 +125,7 @@ export const PacksAPI = {
         return instance.post<{ newCardsPack: ResponseCardsPackType }>('cards/pack', {
             cardsPack: {
                 name: data.name,
-                path: data.path,
+                path: '/def',
                 grade: 1,
                 shots: 2,
                 rating: 2,
@@ -141,12 +138,12 @@ export const PacksAPI = {
     deletePack(packId: string) {
         return instance.delete<{ deletedCardsPack: ResponseCardsPackType }>(`cards/pack?id=${packId}`)
     },
-    updatePack(packId: string) {
+    updatePack(packId: string, name: string = 'updated name') {
         return instance.put<{ updatedCardsPack: ResponseCardsPackType }>(`cards/pack`, {
             cardsPack: {
                 _id: packId,
-                name: 'updated keker',
-                path: 'updated path',
+                name,
+                path: '/def',
                 grade: 1,
                 shots: 2,
                 rating: 2,
@@ -157,6 +154,7 @@ export const PacksAPI = {
         })
     },
 };
+
 
 export const CardsAPI = {
     getCards(cardsPack_id: string) {
