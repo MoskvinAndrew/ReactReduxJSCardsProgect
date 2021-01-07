@@ -10,6 +10,7 @@ export const Nav = () => {
             <NavLink to={RoutingStringConstants.login}>Login</NavLink>
             <NavLink to={RoutingStringConstants.profile}>Profile</NavLink>
             <NavLink to={RoutingStringConstants.packs}>Packs of cards</NavLink>
+            <NavLink to={RoutingStringConstants.cards}>CARDS</NavLink>
             <NavLink to={RoutingStringConstants.passwordRecovery}>Reset Password</NavLink>
             <NavLink to={RoutingStringConstants.newPassword}>New password</NavLink>
             <NavLink to={RoutingStringConstants.testPage}>TestPage</NavLink>
