@@ -3,7 +3,6 @@ import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 import {loginParamsType} from "../m2-BLL/Redux/login-reducer";
 import {CardType} from "../m2-BLL/Redux/cards-Reducer";
 
-
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://neko-back.herokuapp.com/2.0',
