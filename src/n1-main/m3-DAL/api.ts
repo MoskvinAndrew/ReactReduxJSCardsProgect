@@ -5,7 +5,7 @@ import {loginParamsType} from "../m2-BLL/Redux/login-reducer";
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'https://neko-back.herokuapp.com/2.0',
+    baseURL: 'https://neko-back.herokuapp.com/2.0/',
     // baseURL: '"http://localhost:7542/2.0/"	',
 });
 
@@ -82,7 +82,7 @@ export const AuthAPI = {
         return instance.post<ResponseType<UserType>>('auth/set-new-password', data)
     },
     login(data: loginParamsType) {
-        const promise = instance.post('auth/login', data);
+        const promise = instance.post('/auth/login', data);
         return promise;
     },
     me() {
@@ -96,7 +96,8 @@ export const AuthAPI = {
 };
 
 export const PacksAPI = {
-    getPacks(packName?: string, minPacks?: number, maxPacks?: number, sortPacks?: string, page?: number, pageCount?: number) {
+
+    getPacks(packName?: string, minPacks?: number, maxPacks?: number, sortPacks?: string, page?: number, pageCount?: number,user_Id?:string) {
         return instance.get<PacksStateType>(`cards/pack`, {
             params: {
                 packName: packName,
@@ -105,6 +106,7 @@ export const PacksAPI = {
                 sortPacks: sortPacks,
                 page: page,
                 pageCount: pageCount,
+                user_id: user_Id,
             }
         })
     },
@@ -141,3 +143,11 @@ export const PacksAPI = {
         })
     },
 };
+
+//
+// getCards: async (token: string, cardsPack_id: string) => {
+//     const response = await instance.get<DataType>(`/cards/card?token=${token}&cardsPack_id=${cardsPack_id}`);
+//
+//     return response.data;
+// },
+// console.log(CardsApi.getCards('5fec6814995864000484cd1a'));

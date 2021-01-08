@@ -51,7 +51,9 @@ export let loginTC = (data:loginParamsType) => (dispatch: Dispatch<ActionsType|s
     dispatch(loginProcessInProgressAC(true));
   AuthAPI.login(data)
       .then( res => {
+          debugger
           dispatch(setProfileDataAC(res.data));
+          console.error(res.data);
           dispatch(changeLoginStatusAC(true));
 
       })

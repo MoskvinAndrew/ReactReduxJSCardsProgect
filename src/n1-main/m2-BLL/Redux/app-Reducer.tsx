@@ -71,13 +71,11 @@ export const initializedAppThunk = () => {
     return (dispatch: Dispatch) => {
         AuthAPI.me()
             .then( (response:any) =>{
-                console.log(response)
                 dispatch(setIsInitializedApp(true));
                 dispatch(changeLoginStatusAC(true));
                 dispatch(setProfileDataAC(response.data));                 ///Андрей это временная шляпа, нужно переделать!!!!
             })
             .catch((err:any)=>{
-                debugger
                 dispatch(setIsInitializedApp(true));
                 <Redirect to={"/login"}/>
             })
@@ -89,8 +87,6 @@ export const logOutMeTC = () => {
     return (dispatch: Dispatch) => {
         AuthAPI.logOut()
             .then( (response:any) =>{
-                console.log(response)
-
                 dispatch(changeLoginStatusAC(false));
             })
     }
