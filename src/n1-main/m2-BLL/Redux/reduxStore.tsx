@@ -8,7 +8,7 @@ import {registerReducer} from "./register-Reducer";
 import {loginReducer} from "./login-reducer";
 import {profileReducer} from "./profile-reducer";
 import { packsReducer } from "./packs-Reducer";
-
+import { cardsReducer } from "./cards-Reducer";
 
 export type StoreReduxType = typeof store
 export type RootState = ReturnType<typeof reducers>
@@ -23,6 +23,7 @@ let reducers = combineReducers({
     login:loginReducer,
     profilePage:profileReducer,
     packsPage: packsReducer,
+    cardsPage: cardsReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

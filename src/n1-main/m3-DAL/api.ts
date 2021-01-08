@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 import {loginParamsType} from "../m2-BLL/Redux/login-reducer";
-
+import {CardType} from "../m2-BLL/Redux/cards-Reducer";
 
 const instance = axios.create({
     withCredentials: true,
@@ -66,6 +66,18 @@ type ResponseType<D = {}> = {
     statusText: string
     data: D
 }
+
+export type CardModalWindowType = {
+    // cardsPack_id: string
+    question: string
+    answer: string
+}
+
+export type GetDataType = {
+    cards: CardType[];
+    error: string;
+}
+
 
 export const AuthAPI = {
     register(data: RegisterRequestType) {
@@ -144,10 +156,34 @@ export const PacksAPI = {
     },
 };
 
-//
-// getCards: async (token: string, cardsPack_id: string) => {
-//     const response = await instance.get<DataType>(`/cards/card?token=${token}&cardsPack_id=${cardsPack_id}`);
-//
-//     return response.data;
-// },
-// console.log(CardsApi.getCards('5fec6814995864000484cd1a'));
+
+export const CardsAPI = {
+    getCards(cardsPack_id: string) {
+        return instance.get<GetDataType>(`/cards/card?cardsPack_id=${cardsPack_id}`
+            + "&pageCount=1000");
+    },
+    addCard(data: CardModalWindowType) {
+        return instance.post<any>('cards/card', {
+            cards: {
+                // cardsPack_id: data.cardsPack_id,
+                question: data.question,
+                answer: data.answer,
+                grade: Math.random() * 5,
+                questionImg: "some img",
+            },
+        })
+    },
+    deleteCard(id: string) {
+        return instance.delete<any>(`/cards/card?&id=${id}`)
+    },
+    updateCard(id: string) {
+        return instance.put<any>("/cards/card", {
+            card: {
+                _id: id,
+                question: "updated question",
+                answerImg: "some answer img",
+                comments: "new com",
+            }
+        })
+    },
+};

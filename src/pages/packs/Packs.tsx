@@ -134,7 +134,7 @@ export const Packs: React.FC<ITableProps> = (props) => {
                                 <button onClick={deleteHandler}>delete</button>
                             </TableCell>
                             <TableCell align="center">
-                                <NavLink to={'/cards'}>cards</NavLink>
+                                <NavLink to={'/cards/'+row._id}>cards</NavLink>
                             </TableCell>
                         </TableRow>
                     })}
