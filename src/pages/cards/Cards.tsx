@@ -48,11 +48,13 @@ export const Cards: React.FC<ITableProps> = (props) => {
 
     let isLoggedIn = useSelector<RootState, boolean>(state => state.login.isLoggedIn)
     let cards = useSelector<RootState, CardType[]>(state => state.cardsPage.cards)
+
     let dispatch = useDispatch()
     const {id} = useParams<{id:string}>();
 
     useEffect(() => {
         dispatch(getCardThunk(id))
+
     }, [isLoggedIn])
 
 

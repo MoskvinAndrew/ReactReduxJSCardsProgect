@@ -17,19 +17,20 @@
 span .pageNumber{
     font-family: "Arial Black";
     width: 20px;
-    opacity: 30%;
+    /*opacity: 30%;*/
     cursor: pointer;
-    color: #2d2929;
+    color: #beb2b2;
 }
 
 span.selectedPage .pageNumber{
     font-weight: bold ;
-    opacity:1;
+    /*opacity:1;*/
     text-decoration: underline;
+    color: #696363;
 
 }
 span .pageNumber:hover{
-    opacity: 1;
+    /*opacity: 1;*/
 
 
 }

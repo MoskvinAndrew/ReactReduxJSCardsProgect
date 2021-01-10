@@ -14,6 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import {Modal} from "@material-ui/core";
 import {AddPacksModalForm} from "./AddPacksModalForm";
 import {FilterAndSearch} from "../Filter&SerchContainer/FilterSearchContainer";
+import { Cards } from "../cards/Cards";
 
 
 
@@ -134,7 +135,7 @@ export const Packs: React.FC<ITableProps> = (props) => {
                                 <button onClick={deleteHandler}>delete</button>
                             </TableCell>
                             <TableCell align="center">
-                                <NavLink to={'/cards/'+row._id}>cards</NavLink>
+                                <NavLink to={'/cards/'+row._id}>Cards</NavLink>
                             </TableCell>
                         </TableRow>
                     })}

@@ -21,7 +21,7 @@ const Routes: React.FC = () => {
             <Route exact path={RoutingStringConstants.login} render={() => <LoginComponent/>}/>
             <Route exact path={RoutingStringConstants.profile} render={() => <ProfileComponent/>}/>
             <Route exact path={RoutingStringConstants.packs} render={() => <Packs />}/>
-            <Route exact path={RoutingStringConstants.cards + '/:id'} render={() => <Cards />}/>
+            <Route exact path={RoutingStringConstants.cards + '/:id'} render={() => <Cards/>}/>
             <Route exact path={RoutingStringConstants.passwordRecovery} render={() => <PasswordRecovery/>}/>
             <Route exact path={RoutingStringConstants.newPassword} render={() => <NewPassword/>}/>
             <Route exact path={RoutingStringConstants.testPage} render={() => <TestPage/>}/>
