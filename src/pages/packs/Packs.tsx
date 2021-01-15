@@ -11,10 +11,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {Modal} from "@material-ui/core";
+import {Button, Modal} from "@material-ui/core";
 import {AddPacksModalForm} from "./AddPacksModalForm";
 import {FilterAndSearch} from "../Filter&SerchContainer/FilterSearchContainer";
-import { Cards } from "../cards/Cards";
 
 
 
@@ -134,9 +133,12 @@ export const Packs: React.FC<ITableProps> = (props) => {
                                 <button onClick={updateHandler}>update</button>
                                 <button onClick={deleteHandler}>delete</button>
                             </TableCell>
-                            <TableCell align="center">
-                                <NavLink to={'/cards/'+row._id}>Cards</NavLink>
-                            </TableCell>
+                            <Button variant={"contained"}>
+                                <NavLink to={'/cards/'+row._id} style={{textDecoration:"none"}}>Cards</NavLink>
+                            </Button>
+                            <Button variant={"contained"} color={"secondary"}>
+                                <NavLink to={'/learn/' +row._id} style={{textDecoration:"none"}}>Learn</NavLink>
+                            </Button>
                         </TableRow>
                     })}
                 </TableBody>

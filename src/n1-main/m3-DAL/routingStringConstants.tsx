@@ -9,6 +9,7 @@ export const RoutingStringConstants = {
     packs:"/packs",
     newPassword:"/newPassword",
     testPage:"/testPage",
-    cards:"/cards"
+    cards:"/cards",
+    learn:"/learn",
 }
 

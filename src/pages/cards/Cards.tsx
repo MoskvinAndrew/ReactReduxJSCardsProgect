@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import {Modal} from "@material-ui/core";
 import {CardsModalForm} from "./CardsModalForm";
 import {CardType, deleteCardThunk, getCardThunk, updateCardThunk} from "../../n1-main/m2-BLL/Redux/cards-Reducer";
+import {CircularProgressWithLabel} from "../../n1-main/m1-UI/common/CircularProgress/CircularProgress";
 
 
 interface ITableProps {
@@ -48,6 +49,7 @@ export const Cards: React.FC<ITableProps> = (props) => {
 
     let isLoggedIn = useSelector<RootState, boolean>(state => state.login.isLoggedIn)
     let cards = useSelector<RootState, CardType[]>(state => state.cardsPage.cards)
+
 
     let dispatch = useDispatch()
     const {id} = useParams<{id:string}>();
@@ -127,7 +129,9 @@ export const Cards: React.FC<ITableProps> = (props) => {
                                 {row.question}
                             </TableCell>
                             <TableCell align="center">{row.answer}</TableCell>
-                            <TableCell align="center">{row.grade}</TableCell>
+                            {/*<TableCell align="center">{row.grade}</TableCell>*/}
+                            <TableCell align="center"><CircularProgressWithLabel value={row.grade*20} /></TableCell>     //умножаю значение grade на 20 для наглядности
+
                             <TableCell align="center">{row.updated}</TableCell>
                             <TableCell align="center">{row.type}</TableCell>
                             <TableCell align="center">

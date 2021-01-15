@@ -10,6 +10,7 @@ import {Cards} from "../../../pages/cards/Cards";
 import {RoutingStringConstants} from "../../m3-DAL/routingStringConstants";
 import {LoginComponent} from "../../../pages/login/loginComponent";
 import {ProfileComponent} from "../../../pages/profile/profileComponent";
+import LearnPage from "../../../n2-features/f4-Learn/Learn";
 
 
 const Routes: React.FC = () => {
@@ -25,7 +26,8 @@ const Routes: React.FC = () => {
             <Route exact path={RoutingStringConstants.passwordRecovery} render={() => <PasswordRecovery/>}/>
             <Route exact path={RoutingStringConstants.newPassword} render={() => <NewPassword/>}/>
             <Route exact path={RoutingStringConstants.testPage} render={() => <TestPage/>}/>
-            <Route exact path='/404' render={() => <FourOFour/>}/>
+            <Route exact path = {RoutingStringConstants.learn + '/:id'}  render={()=> <LearnPage/>}/>
+            <Route  path='*' render={() => <FourOFour/>}/>
         </Switch>
     )
 };

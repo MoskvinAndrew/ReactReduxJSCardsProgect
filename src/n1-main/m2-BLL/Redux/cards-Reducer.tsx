@@ -118,6 +118,15 @@ export const updateCardThunk = (id: string, pack_id: string) => {
                 dispatch(setStatus('failed'))
             })
     }
+};
+
+export const updateCardGradeTC = (grade:number,card_id:string) => {
+    return () => {
+        CardsAPI.updateCardGrade(grade,card_id)
+            .then(res =>{
+                console.log(res.data)
+            })
+    }
 }
 
 

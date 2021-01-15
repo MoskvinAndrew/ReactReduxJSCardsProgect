@@ -186,4 +186,7 @@ export const CardsAPI = {
             }
         })
     },
+    updateCardGrade(grade:number,card_id:string) {
+        return instance.put<any>("/cards/grade",{grade,card_id});
+    }
 };
