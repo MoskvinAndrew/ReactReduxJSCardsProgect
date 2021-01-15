@@ -130,7 +130,8 @@ export const Cards: React.FC<ITableProps> = (props) => {
                             </TableCell>
                             <TableCell align="center">{row.answer}</TableCell>
                             {/*<TableCell align="center">{row.grade}</TableCell>*/}
-                            <TableCell align="center"><CircularProgressWithLabel value={row.grade*20} /></TableCell>     //умножаю значение grade на 20 для наглядности
+
+                            <TableCell align="center"><CircularProgressWithLabel value={row.grade*20} /></TableCell>
 
                             <TableCell align="center">{row.updated}</TableCell>
                             <TableCell align="center">{row.type}</TableCell>
