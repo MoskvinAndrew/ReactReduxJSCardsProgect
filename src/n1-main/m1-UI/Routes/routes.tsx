@@ -1,11 +1,11 @@
-import {Route, Switch, useParams} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import TestPage from "../../../pages/test/testPage";
 import PasswordRecovery from "../../../pages/password_recovery/passwordRecovery";
 import NewPassword from "../../../pages/new_password/newPassword";
 import FourOFour from "../../../pages/FourZeroFour/FourZeroFour";
 import React from "react";
 import {RegistrationComponent} from "../../../pages/registration/RegistrationComponent";
-import { Packs } from "../../../pages/packs/Packs";
+import {Packs} from "../../../pages/packs/Packs";
 import {Cards} from "../../../pages/cards/Cards";
 import {RoutingStringConstants} from "../../m3-DAL/routingStringConstants";
 import {LoginComponent} from "../../../pages/login/loginComponent";

@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import { AuthAPI } from "../../m3-DAL/api";
+import {AuthAPI} from "../../m3-DAL/api";
 import {changeLoginStatusAC} from "./login-reducer";
 import {Redirect} from "react-router-dom";
 import React from "react";
@@ -13,7 +13,7 @@ enum AppActionConsts {
 
 //type
 export type ActionsAppType = ReturnType<typeof setError> |
-    ReturnType<typeof setStatus>|
+    ReturnType<typeof setStatus> |
     ReturnType<typeof setIsInitializedApp>;
 
 export type AppStateType = {
@@ -38,7 +38,7 @@ export const appReducer = (state: AppStateType = initialState, action: ActionsAp
         case AppActionConsts.SET_STATUS:
             return {...state, status: action.status};
         case AppActionConsts.SET_IS_INITIALIZED:
-            return {...state, isInitializedApp:action.isInitialized}
+            return {...state, isInitializedApp: action.isInitialized}
         default:
             return state
     }
@@ -70,16 +70,15 @@ export const initializedAppThunk = () => {
 
     return (dispatch: Dispatch) => {
         AuthAPI.me()
-            .then( (response:any) =>{
-                console.log(response)
-                dispatch(setIsInitializedApp(true));
+            .then((response: any) => {
                 dispatch(changeLoginStatusAC(true));
                 dispatch(setProfileDataAC(response.data));                 ///Андрей это временная шляпа, нужно переделать!!!!
             })
-            .catch((err:any)=>{
-                debugger
-                dispatch(setIsInitializedApp(true));
+            .catch((err: any) => {
                 <Redirect to={"/login"}/>
+            })
+            .finally(() => {
+                dispatch(setIsInitializedApp(true));
             })
     }
 }
@@ -88,9 +87,7 @@ export const logOutMeTC = () => {
 
     return (dispatch: Dispatch) => {
         AuthAPI.logOut()
-            .then( (response:any) =>{
-                console.log(response)
-
+            .then((response: any) => {
                 dispatch(changeLoginStatusAC(false));
             })
     }
