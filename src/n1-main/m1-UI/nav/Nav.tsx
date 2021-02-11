@@ -11,19 +11,19 @@ export const NavBar = () => {
             </NavLink>
             <NavMobileBar/>
             <NavMenu>
-                <NavLink to={RoutingStringConstants.profile} activeStyle={{color: '#15cdfc'}}>
+                <NavLink to={RoutingStringConstants.profile}>
                     Profile
                 </NavLink>
-                <NavLink to={RoutingStringConstants.packs} activeStyle={{color: '#15cdfc'}}>
+                <NavLink to={RoutingStringConstants.packs}>
                     Packs of cards
                 </NavLink>
-                <NavLink to={RoutingStringConstants.passwordRecovery} activeStyle={{color: '#15cdfc'}}>
+                <NavLink to={RoutingStringConstants.passwordRecovery}>
                     Reset Password
                 </NavLink>
                 <NavLink to={RoutingStringConstants.newPassword}>
                     New password
                 </NavLink>
-                <NavLink to={RoutingStringConstants.testPage} activeStyle={{color: '#15cdfc'}}>
+                <NavLink to={RoutingStringConstants.testPage}>
                     TestPage
                 </NavLink>
             </NavMenu>
