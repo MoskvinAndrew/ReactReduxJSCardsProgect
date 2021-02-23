@@ -82,16 +82,13 @@ export const AuthAPI = {
         return instance.post<ResponseType<UserType>>('auth/set-new-password', data)
     },
     login(data: loginParamsType) {
-        const promise = instance.post('auth/login', data);
-        return promise;
+        return instance.post('auth/login', data);
     },
     me() {
-        const promise = instance.post('auth/me');
-        return promise;
+        return instance.post('auth/me');
     },
     logOut() {
-        const promise = instance.delete('auth/me');
-        return promise;
+        return instance.delete('auth/me');
     },
 };
 

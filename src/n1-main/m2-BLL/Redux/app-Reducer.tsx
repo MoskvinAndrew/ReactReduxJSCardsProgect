@@ -67,7 +67,6 @@ export const setIsInitializedApp = (isInitialized: boolean) => {
 
 
 export const initializedAppThunk = () => {
-
     return (dispatch: Dispatch) => {
         AuthAPI.me()
             .then((response: any) => {

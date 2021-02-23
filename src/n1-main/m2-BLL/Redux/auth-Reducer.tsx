@@ -10,7 +10,6 @@ export const authReducer = (state: authStateType = initialState, action: Actions
     switch (action.type) {
         case 'isAuth':
             return state
-
         default:
             return state
     }

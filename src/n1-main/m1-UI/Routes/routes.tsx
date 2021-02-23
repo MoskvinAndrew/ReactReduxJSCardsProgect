@@ -14,7 +14,6 @@ import {ProfileComponent} from "../../../pages/profile/profileComponent";
 
 const Routes: React.FC = () => {
 
-
     return(
         <Switch>
             <Route exact path={RoutingStringConstants.registration} render={() => <RegistrationComponent/>}/>
