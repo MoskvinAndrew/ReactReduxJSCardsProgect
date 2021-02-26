@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .navBar__block_logo {
@@ -15,10 +15,18 @@
     text-decoration: none;
 }
 
+.nav__menu_li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-link {
+    display: block;
     text-decoration: none;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem;
+    text-align: center;
 }
 
 .nav-link:hover {
@@ -46,3 +54,12 @@
 
 }
 
+.menu-icon {
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .menu-icon {
+        display: block;
+    }
+}
