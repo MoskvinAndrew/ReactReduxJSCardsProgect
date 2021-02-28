@@ -37,9 +37,9 @@ export const NavBar = () => {
                 <h1>Logo</h1>
             </NavLink>
             <div className={s['menu-icon']} onClick={onClickHandler}>
-                <i className={isActiveMode ? 'fas fa-times' : 'fas fa-bars'}></i>
+                <i className={isActiveMode ? `fas fa-times` : `fas fa-bars`}></i>
             </div>
-            <ul className={isActiveMode ? `${s.nav_menu} ${s.active}` : `${s.nav_menu}`}>
+            <div className={isActiveMode ? `${s.nav_menu} ${s.active}` : `${s.nav_menu}`}>
                 {navItems.map((item, index) => {
                     return (
                         <li key={index} className={s[`${item.classNameLi}`]}>
@@ -49,7 +49,7 @@ export const NavBar = () => {
                         </li>
                     )
                 })}
-            </ul>
+            </div>
             <div className={s.navBar__block_btn}>
                 <NavLink to={RoutingStringConstants.login}>
                     <Button buttonSize={"btn--small"} buttonStyle={"btn--outline"}>
