@@ -8,19 +8,19 @@ import {RegistrationComponent} from "../../../pages/registration/RegistrationCom
 import {Packs} from "../../../pages/packs/Packs";
 import {Cards} from "../../../pages/cards/Cards";
 import {RoutingStringConstants} from "../../m3-DAL/routingStringConstants";
-import {LoginComponent} from "../../../pages/login/loginComponent";
 import {ProfileComponent} from "../../../pages/profile/profileComponent";
+import {LoginComponent} from "../../../pages/login/loginComponent";
 
 
 const Routes: React.FC = () => {
 
-    return(
+    return (
         <Switch>
             <Route exact path={RoutingStringConstants.registration} render={() => <RegistrationComponent/>}/>
             <Route exact path={RoutingStringConstants.login} render={() => <LoginComponent/>}/>
             <Route exact path={RoutingStringConstants.profile} render={() => <ProfileComponent/>}/>
-            <Route exact path={RoutingStringConstants.packs} render={() => <Packs />}/>
-            <Route exact path={RoutingStringConstants.cards} render={() => <Cards />}/>
+            <Route exact path={RoutingStringConstants.packs} render={() => <Packs/>}/>
+            <Route exact path={RoutingStringConstants.cards} render={() => <Cards/>}/>
             <Route exact path={RoutingStringConstants.passwordRecovery} render={() => <PasswordRecovery/>}/>
             <Route exact path={RoutingStringConstants.newPassword} render={() => <NewPassword/>}/>
             <Route exact path={RoutingStringConstants.testPage} render={() => <TestPage/>}/>

@@ -130,6 +130,8 @@
     }
 }
 
-/*mobile_iconbar{*/
-/*    color: */
-/*}*/
+.navBar__block_Nonlogged {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

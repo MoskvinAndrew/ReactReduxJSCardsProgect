@@ -3,8 +3,12 @@ import {RoutingStringConstants} from "../../m3-DAL/routingStringConstants";
 import s from '../nav/nav.module.css';
 import {NavLink} from "react-router-dom";
 import {Button} from "./Button";
+import {useSelector} from "react-redux";
+import {RootState} from "../../m2-BLL/Redux/reduxStore";
 
 export const NavBar = () => {
+
+    const isLoggedIn = useSelector<RootState, boolean>((state => state.login.isLoggedIn))
 
     const navItems = [
         {title: 'Profile', to: RoutingStringConstants.profile, className: 'nav-link', classNameLi: 'nav__menu_li'},
@@ -25,21 +29,22 @@ export const NavBar = () => {
         {title: 'test page', to: RoutingStringConstants.testPage, className: 'nav-link', classNameLi: 'nav__menu_li'},
     ];
 
+
     const [isActiveMode, setIsActiveMode] = useState<boolean>(false)
 
     const onClickHandler = () => {
         setIsActiveMode(!isActiveMode)
-    }
+    };
 
     return (
-        <nav className={s.navBar__block}>
+        <nav className={(isLoggedIn) ? `${s.navBar__block}` : `${s.navBar__block} ${s.navBar__block_Nonlogged}`}>
             <NavLink to={RoutingStringConstants.profile} className={s.navBar__block_logo}>
                 <h1>Logo</h1>
             </NavLink>
-            <div className={s['menu-icon']} onClick={onClickHandler}>
+            {isLoggedIn && <div className={s['menu-icon']} onClick={onClickHandler}>
                 <i className={isActiveMode ? `fas fa-times` : `fas fa-bars`}></i>
-            </div>
-            <div className={isActiveMode ? `${s.nav_menu} ${s.active}` : `${s.nav_menu}`}>
+            </div>}
+            {isLoggedIn && <div className={isActiveMode ? `${s.nav_menu} ${s.active}` : `${s.nav_menu}`}>
                 {navItems.map((item, index) => {
                     return (
                         <li key={index} className={s[`${item.classNameLi}`]}>
@@ -49,8 +54,8 @@ export const NavBar = () => {
                         </li>
                     )
                 })}
-            </div>
-            <div className={s.navBar__block_btn}>
+            </div>}
+            {!isLoggedIn && <div className={s.navBar__block_btn}>
                 <NavLink to={RoutingStringConstants.login}>
                     <Button buttonSize={"btn--small"} buttonStyle={"btn--outline"}>
                         Sign In
@@ -61,7 +66,7 @@ export const NavBar = () => {
                         Sign Up
                     </Button>
                 </NavLink>
-            </div>
+            </div>}
         </nav>
     );
-}
+};

@@ -16,8 +16,6 @@ type RegistrationPropsType = {}
 
 
 const validationSchema = yup.object().shape({
-
-
     password: yup.string()
         .min(7, '7 char or more')
         .max(50, 'password is too long')
@@ -29,7 +27,7 @@ const validationSchema = yup.object().shape({
 });
 
 export const RegistrationForm: React.FC<RegistrationPropsType> = () => {
-    const error = useSelector<RootState, string|null>(state => state.app.error);
+    const error = useSelector<RootState, string | null>(state => state.app.error);
     const dispatch = useDispatch();
 
     const formik = useFormik({
