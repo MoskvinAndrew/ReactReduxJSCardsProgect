@@ -69,28 +69,35 @@ export const setIsInitializedApp = (isInitialized: boolean) => {
 export const initializedAppThunk = () => {
     return (dispatch: Dispatch) => {
         AuthAPI.me()
-            .then((response: any) => {
+            .then((res) => {
                 dispatch(changeLoginStatusAC(true));
-                dispatch(setProfileDataAC(response.data));                 ///Андрей это временная шляпа, нужно переделать!!!!
+                dispatch(setProfileDataAC(res.data));                 ///Андрей это временная шляпа, нужно переделать!!!!
             })
-            .catch((err: any) => {
+            .catch((err) => {
                 <Redirect to={"/login"}/>
+                dispatch(setStatus('failed'))
+                dispatch(setError(err))
             })
             .finally(() => {
                 dispatch(setIsInitializedApp(true));
             })
     }
-}
+};
 
 export const logOutMeTC = () => {
-
     return (dispatch: Dispatch) => {
+        dispatch(setStatus('loading'))
         AuthAPI.logOut()
-            .then((response: any) => {
+            .then(() => {
                 dispatch(changeLoginStatusAC(false));
+                dispatch(setStatus('succeed'))
+            })
+            .catch((err) => {
+                dispatch(setError(err))
+                dispatch(setStatus('failed'))
             })
     }
-}
+};
 
 
 

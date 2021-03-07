@@ -56,10 +56,9 @@ export const loginProcessInProgressAC = (loginProcessInProgress: boolean): login
 export let loginTC = (data: loginParamsType) => (dispatch: Dispatch<ActionsType | setProfileDataACType | ActionsAppType>) => {
     dispatch(loginProcessInProgressAC(true));
     AuthAPI.login(data)
-        .then(res => {
+        .then((res) => {
             dispatch(setProfileDataAC(res.data));
             dispatch(changeLoginStatusAC(true));
-
         })
         .catch(e => {
             dispatch(loginProcessInProgressAC(false))

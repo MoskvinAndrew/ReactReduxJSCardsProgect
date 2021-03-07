@@ -1,17 +1,16 @@
 import React from 'react';
-import {useSelector} from "react-redux";
-import {Redirect} from 'react-router-dom';
-import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 import LoginForm from "./loginForm";
+import {useSelector} from "react-redux";
+import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
+import {Redirect} from "react-router-dom";
 
 type PropsType = {}
 
 export const LoginComponent: React.FC<PropsType> = (props) => {
+    const isLoggedIn = useSelector<RootState, boolean>(state => state.login.isLoggedIn);
 
-    const isSignedUp = useSelector<RootState, boolean>(state => state.register.isSignedUp);
-
-    if (isSignedUp) {
-        return <Redirect to={'/login'}/>
+    if (isLoggedIn) {
+        return <Redirect to={'/profile'}/>
     }
     return (
         <div>

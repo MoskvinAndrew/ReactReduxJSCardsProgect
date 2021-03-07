@@ -16,17 +16,18 @@
 
 .navBar__block_logo {
     color: #fff;
-    justify-self: start;
+    position: absolute;
+    top: 0;
+    left: 0;
     margin-left: 20px;
     cursor: pointer;
     text-decoration: none;
+    transform: translateY(65%);
 }
 
 @media (max-width: 750px) {
     .navBar__block_logo {
         position: absolute;
-        top: 0;
-        left: 0;
         transform: translate(25%, 40%);
     }
 }
@@ -132,6 +133,6 @@
 
 .navBar__block_Nonlogged {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }

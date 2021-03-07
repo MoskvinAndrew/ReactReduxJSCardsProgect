@@ -11,6 +11,8 @@ import atom from "../../images/atom.svg";
 import {AlertComponent} from "../../n2-features/f3-errorSnackBar/errorHandler";
 import {RootState} from "../../n1-main/m2-BLL/Redux/reduxStore";
 import loading from "../../images/hzk6C.gif";
+import {NavLink} from "react-router-dom";
+import {RoutingStringConstants} from "../../n1-main/m3-DAL/routingStringConstants";
 
 type RegistrationPropsType = {}
 
@@ -45,19 +47,18 @@ export const RegistrationForm: React.FC<RegistrationPropsType> = () => {
         color: 'red',
         margin: '5px 0px',
     }
+    const buttonStyle = {
+        margin: '20px 0px'
+    }
 
     return <div className={s.form__content}>
-
         {/*{statusApp==="loading" && <div className={style.overlay}>*/}
         {/*    <img src= {loading}/>*/}
         {/*</div>}*/}
-
         <div className={style.logo}>
             <img src={atom}/>
             <h1 className={style.LogoName}>React Education Cards</h1>
         </div>
-
-
         <Grid container justify="center">
             <Grid item xs={4}>
                 <form onSubmit={formik.handleSubmit}>
@@ -81,7 +82,15 @@ export const RegistrationForm: React.FC<RegistrationPropsType> = () => {
                             />
                             {formik.errors.password && formik.touched.password ?
                                 <div style={errorStyle}>{formik.errors.password}</div> : null}
-                            <Button type={'submit'} variant={'contained'} color={'primary'}>Click To Join Us </Button>
+                            <Button style={buttonStyle} type={'submit'} variant={'contained'} color={'primary'}>Click To
+                                Join Us </Button>
+                            <h4>
+                                <p>Have you got an account?</p>
+                                <NavLink className={s.form__content_navLink}
+                                         to={'/login'}>Sign In</NavLink>
+                                <NavLink className={s.form__content_navLink}
+                                         to={RoutingStringConstants.passwordRecovery}>Forgot password?</NavLink>
+                            </h4>
                         </FormGroup>
                     </FormControl>
                 </form>

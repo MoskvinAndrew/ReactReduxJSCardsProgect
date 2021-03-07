@@ -1,8 +1,9 @@
-.registration{
+.registration {
     width: 100%;
     height: 90vh;
 }
-.form__wrapper{
+
+.form__wrapper {
     height: 100%;
     padding: 15px;
     display: flex;
@@ -11,6 +12,7 @@
     background-color: #dedee9;
     height: 100vh;
 }
+
 .form__content {
     padding: 25px 15px;
     height: 100%;
@@ -20,33 +22,44 @@
     align-items: center;
     background-color: #e1e3f3;
 }
+
 .form__content_email,
-.form__content_password{
+.form__content_password {
     padding: 5px;
     width: 300px;
 }
 
 .form__content_email h4,
-.form__content_password h4{
+.form__content_password h4 {
     padding: 10px 15px;
     text-align: left;
 }
 
 .form__content_email input,
-.form__content_password input{
+.form__content_password input {
     width: 90%;
     padding: 5px 10px;
     outline: none;
 }
 
-.form__content_btn{
+.form__content_btn {
     margin-top: 10px;
 }
-.form__content_btn button{
-    padding: 5px 10px;
+
+.form__content_btn button {
+    padding: 10px;
     outline: none;
 }
-.LogoName{
+
+.LogoName {
     margin-bottom: 50px;
     font-family: "Book Antiqua";
+}
+
+.form__content_navLink {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: #125da5;
+    margin: 0.5rem;
 }

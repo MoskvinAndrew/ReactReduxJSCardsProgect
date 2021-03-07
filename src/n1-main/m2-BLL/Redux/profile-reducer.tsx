@@ -3,7 +3,7 @@ const SET_PROFILE_DATA = 'profileReducer/SET_PROFILE_DATA';
 export type authStateType = typeof initialState;
 
 const initialState = {
-    profileData:{
+    profileData: {
         avatar: "",
         created: "",
         email: "",
@@ -18,30 +18,27 @@ const initialState = {
         __v: 0,
         _id: ""
     }
-}
-
-
+};
 
 
 export const profileReducer = (state: authStateType = initialState, action: ActionsType): authStateType => {
-
     switch (action.type) {
-
-        case 'profileReducer/SET_PROFILE_DATA':
-            return {...state,profileData:action.profileData}
-
+        case SET_PROFILE_DATA:
+            return {...state, profileData: action.profileData};
         default:
             return state
     }
-}
+};
 
-export const setProfileDataAC = (profileData:profileDataType) =>({type:'profileReducer/SET_PROFILE_DATA',profileData} as const);
+export const setProfileDataAC = (profileData: ProfileDataType) => ({
+    type: 'profileReducer/SET_PROFILE_DATA',
+    profileData
+} as const);
 
 export type setProfileDataACType = ReturnType<typeof setProfileDataAC>
-
 type ActionsType = setProfileDataACType
 
- export type profileDataType = {
+export type ProfileDataType = {
     avatar: string,
     created: string,
     email: string,
@@ -54,5 +51,5 @@ type ActionsType = setProfileDataACType
     updated: string,
     verified: boolean,
     __v: number,
-    _id: string
+    _id: string,
 }

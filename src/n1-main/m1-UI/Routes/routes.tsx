@@ -17,7 +17,7 @@ const Routes: React.FC = () => {
     return (
         <Switch>
             <Route exact path={RoutingStringConstants.registration} render={() => <RegistrationComponent/>}/>
-            <Route exact path={RoutingStringConstants.login} render={() => <LoginComponent/>}/>
+            <Route exact path={RoutingStringConstants.login} render={() => <LoginComponent />}/>
             <Route exact path={RoutingStringConstants.profile} render={() => <ProfileComponent/>}/>
             <Route exact path={RoutingStringConstants.packs} render={() => <Packs/>}/>
             <Route exact path={RoutingStringConstants.cards} render={() => <Cards/>}/>

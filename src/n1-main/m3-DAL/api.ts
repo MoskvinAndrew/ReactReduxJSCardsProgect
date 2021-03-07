@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {PacksStateType} from "../m2-BLL/Redux/packs-Reducer";
 import {loginParamsType} from "../m2-BLL/Redux/login-reducer";
+import {ProfileDataType} from "../m2-BLL/Redux/profile-reducer";
 
 
 const instance = axios.create({
@@ -82,13 +83,13 @@ export const AuthAPI = {
         return instance.post<ResponseType<UserType>>('auth/set-new-password', data)
     },
     login(data: loginParamsType) {
-        return instance.post('auth/login', data);
+        return instance.post<ProfileDataType>('auth/login', data);
     },
     me() {
-        return instance.post('auth/me');
+        return instance.post<ProfileDataType>('auth/me');
     },
     logOut() {
-        return instance.delete('auth/me');
+        return instance.delete<{ info: string }>('auth/me');
     },
 };
 

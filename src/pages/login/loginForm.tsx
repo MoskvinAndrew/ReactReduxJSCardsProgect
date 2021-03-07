@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from "./login.module.css";
 import atom from "./../../images/atom.svg"
 import {useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
 import {loginTC} from "../../n1-main/m2-BLL/Redux/login-reducer";
-import {Redirect, useHistory} from 'react-router-dom';
+import {NavLink, Redirect, useHistory} from 'react-router-dom';
 import {
     Button,
     Checkbox,
@@ -22,24 +22,11 @@ import loading from "./../../images/hzk6C.gif"
 
 
 const LoginForm = () => {
-    const error = useSelector<RootState, string|null>(state => state.app.error);
+    const error = useSelector<RootState, string | null>(state => state.app.error);
 
     const loginProcessInProgress = useSelector<RootState, boolean>(state => state.login.loginProcessInProgress);
     const isLoggedIn = useSelector<RootState, boolean>((state) => state.login.isLoggedIn);
     const dispatch = useDispatch();
-
-
-    const history = useHistory();
-
-
-
-    const redirectFuncForgotPassword = () => {
-        history.push(RoutingStringConstants.passwordRecovery);
-        };
-    const redirectFuncRegister = () => {
-        history.push(RoutingStringConstants.registration);
-
-    };
 
     const errorStyle = {
         color: 'red',
@@ -53,8 +40,6 @@ const LoginForm = () => {
             if (!values.email.split("").includes('@')) return {email: "enter correct email"};
             if (!values.password)
                 return {password: "password is required"}
-
-
         },
         initialValues: {
             email: '',
@@ -75,24 +60,19 @@ const LoginForm = () => {
 
     if (isLoggedIn) {
         return <Redirect to={RoutingStringConstants.profile}/>
-    };
+    }
+    ;
     return <div className={style.wrapper}>
-
-
         {/*{loginProcessInProgress ? <div className={style.overlay}>*/}
         {/*    <img src= {loading}/>*/}
         {/*</div>:<div className={style.logo}>*/}
         {/*    <img src={atom}/>*/}
         {/*    <h1 className={style.LogoName}>React Education Cards</h1>*/}
         {/*</div>}*/}
-
-
         <div className={style.logo}>
-            {loginProcessInProgress ?<img className={style.loadingImg} src= {loading}/>:<img src={atom}/>}
+            {loginProcessInProgress ? <img className={style.loadingImg} src={loading}/> : <img src={atom}/>}
             <h1 className={style.LogoName}>React Education Cards</h1>
         </div>
-
-
         <Grid container justify="center">
             <Grid item xs={4}>
                 <form onSubmit={formik.handleSubmit}>
@@ -108,14 +88,11 @@ const LoginForm = () => {
                                 label="Email"
                                 {...formik.getFieldProps('email')}
                             />
-                            {/*{formik.errors.email ? formik.errors.email : null}*/}
-
                             {formik.errors.email && formik.touched.email ?
                                 <div style={errorStyle}>{formik.errors.email}</div> : null}
-
                             <TextField
                                 id="password"
-                                // type="password"
+                                type="password"
                                 label="Password"
                                 margin="normal"
                                 onChange={formik.handleChange}
@@ -128,16 +105,14 @@ const LoginForm = () => {
                                     {...formik.getFieldProps('rememberMe')}
                                     checked={formik.values.rememberMe}
                                 />}
-
                             />
                             <Button type={'submit'} variant={'contained'} color={'primary'}
                                     disabled={loginProcessInProgress}>Login</Button>
-                            <h4 >
-                                <p  className={style.forgotPasswordLink} onClick={redirectFuncForgotPassword}>Forgot
-                                    password?
-                                </p>
-                                <p  className={style.forgotPasswordLink} onClick={redirectFuncRegister}>Registration
-                                </p>
+                            <h4>
+                                <NavLink className={style.loginForm__navLink}
+                                         to={RoutingStringConstants.passwordRecovery}>Forgot password?</NavLink>
+                                <NavLink className={style.loginForm__navLink}
+                                         to={RoutingStringConstants.registration}>Registration</NavLink>
                             </h4>
                         </FormGroup>
                     </FormControl>
@@ -147,6 +122,5 @@ const LoginForm = () => {
         </Grid>
 
     </div>
-
-}
+};
 export default LoginForm;

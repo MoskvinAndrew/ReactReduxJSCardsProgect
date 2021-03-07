@@ -9,11 +9,12 @@
 /*    height:100px;*/
 /*    !*opacity: 0.9;*!*/
 /*}*/
-.loadingImg{
+.loadingImg {
     height: 55%;
-    width:55%;
+    width: 55%;
 }
-.wrapper{
+
+.wrapper {
     padding: 25px 5px;
     height: 100vh;
     background-color: #e1e3f3;
@@ -22,17 +23,22 @@
 
 }
 
-.emailForm{
+.emailForm {
 
 }
-.logo img{
+
+.logo img {
     width: 150px;
 }
-.LogoName{
+
+.LogoName {
     font-family: "Book Antiqua";
     font-weight: bold;
 }
-.forgotPasswordLink{
+
+.loginForm__navLink {
+    display: block;
+    margin: 1rem;
     text-decoration: none;
     cursor: pointer;
     color: #125da5;

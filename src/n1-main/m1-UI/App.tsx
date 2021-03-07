@@ -22,8 +22,6 @@ export const App = () => {
             <CircularProgress/>
         </div>
     }
-    // --- for initialization---
-
     return (
         <div className="App">
             <Main/>
